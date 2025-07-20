@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Battle Nations Units</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css"/>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/nouislider@15.7.0/dist/nouislider.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="light-mode">
+
+<div class="container-fluid">
+    <h4 class="center-align">Battle Nations Unit Tracker</h4>
+    <div class="text-accent-1 center-align" style="margin-bottom: 10px;">
+        After playing Battle Nations in it's first form I have been waiting for something like this.
+        Now I have the knowledge to make it myself. <br>
+        The tracker tracks the units u own and have ranked.<br>
+        If you run into any issues or have feature requests goto:<a href="https://github.com/feddevanderlist/battlenations-unit-tracker/issues">
+        https://github.com/feddevanderlist/battlenations-unit-tracker/issues</a>
+    </div>
+    <div class="right-align">
+        <div class="switch">
+            <label>
+                Light
+                <input id="themeToggle" type="checkbox">
+                <span class="lever"></span>
+                Dark
+            </label>
+        </div>
+    </div>
+    <div class="row filter-section">
+        <div class="input-field col s8 m3">
+            <div id="unlock-level-slider" class="my-3"></div>
+            <p id="unlock-range-display" class="range-label">Level: 1 - 100</p>
+        </div>
+        <div class="input-field col s8 m3">
+            <select id="rank-filter" multiple>
+                <option value="" disabled>Select Rank(s)</option>
+                <option value="2">Rank 2</option>
+                <option value="3">Rank 3</option>
+                <option value="4">Rank 4</option>
+                <option value="5">Rank 5</option>
+                <option value="6">Rank 6</option>
+                <option value="7">Rank 7</option>
+                <option value="8">Rank 8</option>
+                <option value="9">Rank 9</option>
+            </select>
+            <label>Filter by Rank</label>
+        </div>
+        <div class="col s8 m3">
+            <div class="input-field">
+                <select id="nanopods_filter">
+                    <option value="all" selected>All</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <label>Requires Nanopods</label>
+            </div>
+        </div>
+        <div class="col s8 m3">
+            <div>
+                <label>
+                    <input type="checkbox" id="filter-owned"/>
+                    <span>Owned only</span>
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" id="filter-ranked"/>
+                    <span>Hide ranked</span>
+                </label>
+            </div>
+            <label>
+                <input type="checkbox" id="filter-unique">
+                <span>Show Unique Units Only</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="row filter-section">
+        <div class="col s8 m3">
+            <div class="input-field">
+                <select multiple id="building_filter"></select>
+                <label>Building Requirement</label>
+            </div>
+        </div>
+
+        <div class="col s8 m3">
+            <div class="input-field">
+                <select multiple id="other_filter"></select>
+                <label>Other Requirements</label>
+            </div>
+        </div>
+
+        <div class="col s8 m3">
+            <div class="input-field">
+                <select multiple id="category_filter"></select>
+                <label>Category</label>
+            </div>
+        </div>
+        <div class="col s8 m3">
+            <div>
+                <strong>Owned:</strong>
+                <div>
+                    <a class="btn-small waves-effect waves-light" id="owned-select-all">Select All</a>
+                    <a class="btn-small waves-effect waves-light" id="owned-deselect-all">Deselect All</a>
+                </div>
+            </div>
+            <div>
+                <strong>Ranked:</strong>
+                <div>
+                    <a class="btn-small waves-effect waves-light" id="ranked-select-all">Select All</a>
+                    <a class="btn-small waves-effect waves-light" id="ranked-deselect-all">Deselect All</a>
+                </div>
+            </div>
+            <div>
+                <a class="btn-small waves-effect waves-light" id="currentVersionBtn" style="margin: 1em 0;">Set filter
+                    Current Version</a>
+            </div>
+        </div>
+        <button id="exportData" class="btn">Export Tracking</button>
+        <input type="file" id="importData" style="display:none;"/>
+        <button id="importDataBtn" class="btn">Import Tracking</button>
+    </div>
+
+    <table id="unitTable" class="highlight responsive-table">
+        <thead>
+        <tr>
+            <th>Unit Name</th>
+            <th>Rank</th>
+            <th>SP</th>
+            <th>Promotion Reward</th>
+            <th>Unit Type</th>
+            <th>Unlock Level</th>
+            <th>Building Requirement</th>
+            <th>Other Requirements</th>
+            <th>Category</th>
+            <th>Requires Nanopods</th>
+            <th>
+                Owned<br/>
+                <label for="selectAllOwned"></label><input type="checkbox" id="selectAllOwned"/>
+            </th>
+            <th>
+                Completed<br/>
+                <label for="selectAllCompleted"></label><input type="checkbox" id="selectAllCompleted"/>
+            </th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.0/dist/nouislider.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

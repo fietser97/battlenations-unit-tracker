@@ -1,0 +1,26 @@
+{
+  "name": "battlenations-units",
+  "version": "1.0.0",
+  "description": "a rank tracker for bn units",
+  "main": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feddevanderlist/battlenations-units.git"
+  },
+  "keywords": [
+    "battlenations"
+  ],
+  "author": "fedde",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/feddevanderlist/battlenations-units/issues"
+  },
+  "homepage": "https://github.com/feddevanderlist/battlenations-units#readme",
+  "dependencies": {
+    "fs-extra": "^11.3.0",
+    "terser": "^5.43.1"
+  }
+}
