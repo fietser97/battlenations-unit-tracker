@@ -55,16 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     {data: 'rank', title: 'Rank'},
                     {data: 'sp', title: 'SP'},
                     {data: 'promotion_reward', title: 'Promotion Reward'},
-                    {data: 'unit_type', title: 'Unit Type'},
-                    {data: 'unlock_level', title: 'Unlock Level'},
-                    {data: 'building_requirement', title: 'Building Requirement'},
-                    {data: 'other_requirements', title: 'Other Requirements'},
-                    {data: 'category', title: 'Category'},
-                    {
-                        data: 'requires_nanopods',
-                        title: 'Requires Nanopods',
-                        render: data => data ? 'Yes' : 'No'
-                    },
                     {
                         data: null,
                         title: 'Owned',
@@ -80,6 +70,17 @@ document.addEventListener('DOMContentLoaded', function () {
                             const checked = getStoredValue(row.unit_name, 'ranked', row.rank) ? 'checked' : '';
                             return `<label><input type="checkbox" class="ranked-checkbox" data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span></span></label>`;
                         }
+                    },
+                    {data: 'unlock_level', title: 'Unlock Level'},
+                    {data: 'category', title: 'Category'},
+                    {data: 'unit_type', title: 'Unit Type'},
+                    {data: 'building_requirement', title: 'Building Requirement'},
+                    {data: 'other_requirements', title: 'Other Requirements'},
+
+                    {
+                        data: 'requires_nanopods',
+                        title: 'Requires Nanopods',
+                        render: data => data ? 'Yes' : 'No'
                     }
                 ],
                 drawCallback: function () {

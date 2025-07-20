@@ -41,3 +41,26 @@ body.dark-mode .dropdown-content li > span {
     gap: 1rem;
     flex-wrap: wrap;
 }
+table.dataTable thead {
+    background-color: #263238;
+    color: white;
+}
+
+body.dark-mode table.dataTable thead {
+    background-color: #37474f;
+}
+
+table.dataTable tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode table.dataTable tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+/* Light */
+table.dataTable td, table.dataTable th {
+    border-bottom: 1px solid #ccc;
+    padding: 12px 10px;
+    vertical-align: middle;
+}
+
