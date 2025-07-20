@@ -3367,7 +3367,7 @@
     "unit_type": "Soldier-Hunter",
     "unlock_level": 10,
     "building_requirement": "",
-    "other_requirements": "",
+    "other_requirements": "Promotional",
     "requires_nanopods": true,
     "category": "soldiers"
   },
@@ -3379,7 +3379,7 @@
     "unit_type": "Soldier-Hunter",
     "unlock_level": 10,
     "building_requirement": "",
-    "other_requirements": "",
+    "other_requirements": "Promotional",
     "requires_nanopods": true,
     "category": "soldiers"
   },
@@ -3391,7 +3391,7 @@
     "unit_type": "Soldier-Hunter",
     "unlock_level": 10,
     "building_requirement": "",
-    "other_requirements": "",
+    "other_requirements": "Promotional",
     "requires_nanopods": true,
     "category": "soldiers"
   },
@@ -3403,7 +3403,7 @@
     "unit_type": "Soldier-Hunter",
     "unlock_level": 10,
     "building_requirement": "",
-    "other_requirements": "",
+    "other_requirements": "Promotional",
     "requires_nanopods": true,
     "category": "soldiers"
   },
@@ -3415,7 +3415,7 @@
     "unit_type": "Soldier-Hunter",
     "unlock_level": 10,
     "building_requirement": "",
-    "other_requirements": "",
+    "other_requirements": "Promotional",
     "requires_nanopods": true,
     "category": "soldiers"
   },
@@ -3427,7 +3427,7 @@
     "unit_type": "Soldier-Hunter",
     "unlock_level": 10,
     "building_requirement": "",
-    "other_requirements": "",
+    "other_requirements": "Promotional",
     "requires_nanopods": true,
     "category": "soldiers"
   },
@@ -3439,7 +3439,7 @@
     "unit_type": "Soldier-Hunter",
     "unlock_level": 10,
     "building_requirement": "",
-    "other_requirements": "",
+    "other_requirements": "Promotional",
     "requires_nanopods": true,
     "category": "soldiers"
   },
