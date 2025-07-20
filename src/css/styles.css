@@ -35,3 +35,9 @@ body.dark-mode .dropdown-content {
 body.dark-mode .dropdown-content li > span {
     color: #e0e0e0;
 }
+.filter-buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}

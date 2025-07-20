@@ -1,5 +1,7 @@
 let table;
 let unitData = [];
+let unlockSlider;
+let seenUnitNames = new Set();
 
 const excludeOthers = [
     "The Ridgy-Didge",
@@ -20,6 +22,23 @@ const excludeOthers = [
 ];
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Unlock level range filtering
+    unlockSlider = document.getElementById('unlock-level-slider');
+    noUiSlider.create(unlockSlider, {
+        start: [1, 46],
+        connect: true,
+        step: 1,
+        tooltips: true,
+        range: {
+            min: 1,
+            max: 70
+        },
+        format: {
+            to: value => Math.round(value),
+            from: value => Number(value)
+        }
+    });
+
     fetch('data/unit_data.json')
         .then(res => res.json())
         .then(data => {
@@ -105,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 table.draw();
             });
             $('#unitTable').on('change', '.owned-checkbox, .ranked-checkbox', function () {
+                seenUnitNames = new Set();
                 table.draw();
             });
             document.getElementById('currentVersionBtn').addEventListener('click', () => {
@@ -127,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Refresh the Materialize select UI
-                if (M && M.FormSelect) {
+                if (M?.FormSelect) {
                     M.FormSelect.getInstance(otherFilter)?.destroy();
                     M.FormSelect.init(otherFilter);
                 }
@@ -168,31 +188,18 @@ document.addEventListener('DOMContentLoaded', function () {
         if (table && typeof table.draw === 'function') {
             table.draw();
         } else {
-            console.error('Unable to find a drawn');
-        }// Let DataTables handle all filtering
+            console.error('Unable to draw table');
+        }
     }
 
-    // Unlock level range filtering
-    const unlockSlider = document.getElementById('unlock-level-slider');
-    noUiSlider.create(unlockSlider, {
-        start: [1, 46],
-        connect: true,
-        step: 1,
-        tooltips: true,
-        range: {
-            min: 1,
-            max: 100
-        },
-        format: {
-            to: value => Math.round(value),
-            from: value => Number(value)
-        }
-    });
 
+    $.fn.dataTable.ext.search = []; // clear previous filters
 
-    // Add DataTable custom filters
     $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-        const row = unitData[dataIndex]; // safer than table.row(...).data()
+        if (dataIndex === 0) {
+            seenUnitNames = new Set();
+        }
+        const row = unitData[dataIndex];
         if (!row) return false;
 
         // Unlock level
@@ -234,6 +241,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const ownedPass = !filterOwned || status.owned;
         const rankedPass = !filterRanked || !status.ranked;
 
+        // Unique unit name filter
+        const uniqueOnly = $('#filter-unique').prop('checked');
+        if (uniqueOnly && !isUnique(row.unit_name)) return false;
+
         return matchBuilding && matchOther && matchCategory && matchNano && ownedPass && rankedPass;
     });
 
@@ -250,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
             filters: getCurrentFilters()
         };
 
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
         const url = URL.createObjectURL(blob);
 
         const a = document.createElement('a');
@@ -291,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 table.draw(); // Redraw to apply checkbox states
             } catch (err) {
-                alert('Invalid JSON file');
+                console.error('Invalid JSON file');
             }
         };
 
@@ -388,29 +399,52 @@ function updateRankedCheckboxes(checked) {
     });
 }
 
-$.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-    if ($('#filter-unique').prop('checked')) {
-        const row = table.row(dataIndex).data();
-        if (!row) return true; // just in case
-        const unitName = row.unit_name;
+$('#filter-unique').on('change', () => table.draw());
 
-        // Keep track of units seen
-        if (!$.fn.dataTable.ext.search.uniqueUnits) {
-            $.fn.dataTable.ext.search.uniqueUnits = new Set();
+document.getElementById('clear-filters').addEventListener('click', () => {
+    // Reset all select filters
+    const filters = ['building_filter', 'other_filter', 'category_filter', 'rank-filter', 'nanopods_filter'];
+    filters.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            if (el.multiple) el.value = null;
+            else el.value = 'all';
+            M.FormSelect.getInstance(el)?.destroy();
+            M.FormSelect.init(el);
         }
+    });
 
-        if ($.fn.dataTable.ext.search.uniqueUnits.has(unitName)) {
-            return false; // hide this duplicate row
-        } else {
-            $.fn.dataTable.ext.search.uniqueUnits.add(unitName);
-            return true;
-        }
+    // Reset range
+    if (unlockSlider?.noUiSlider) {
+        unlockSlider.noUiSlider.set([1, 70]);
     }
-    return true; // no unique filter, show all rows
-});
 
-$('#filter-unique').on('change', function () {
-    // Clear the unique set before each filter redraw
-    $.fn.dataTable.ext.search.uniqueUnits = new Set();
+    // Uncheck owned/ranked filters
+    $('#filter-owned').prop('checked', false);
+    $('#filter-ranked').prop('checked', false);
+    $('#filter-unique').prop('checked', false);
+
     table.draw();
 });
+
+document.getElementById('clear-all').addEventListener('click', () => {
+    // Clear localStorage tracking
+    localStorage.removeItem('unitTracking');
+
+    // Also reset filters
+    document.getElementById('clear-filters').click();
+
+    // Uncheck all checkboxes visually
+    $('.owned-checkbox, .ranked-checkbox').prop('checked', false);
+
+    table.draw();
+});
+
+function isUnique(unitName) {
+    if (seenUnitNames.has(unitName)) {
+        return false;
+    } else {
+        seenUnitNames.add(unitName);
+        return true;
+    }
+}

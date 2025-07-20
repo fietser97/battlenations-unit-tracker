@@ -22,7 +22,8 @@
         After playing Battle Nations in it's first form I have been waiting for something like this.
         Now I have the knowledge to make it myself. <br>
         The tracker tracks the units u own and have ranked.<br>
-        If you run into any issues or have feature requests goto:<a href="https://github.com/feddevanderlist/battlenations-unit-tracker/issues">
+        If you run into any issues or have feature requests goto:<a
+            href="https://github.com/feddevanderlist/battlenations-unit-tracker/issues">
         https://github.com/feddevanderlist/battlenations-unit-tracker/issues</a>
     </div>
     <div class="right-align">
@@ -38,7 +39,7 @@
     <div class="row filter-section">
         <div class="input-field col s8 m3">
             <div id="unlock-level-slider" class="my-3"></div>
-            <p id="unlock-range-display" class="range-label">Level: 1 - 100</p>
+            <p id="unlock-range-display" class="range-label">Level: 1 - 70</p>
         </div>
         <div class="input-field col s8 m3">
             <select id="rank-filter" multiple>
@@ -124,9 +125,18 @@
                     Current Version</a>
             </div>
         </div>
-        <button id="exportData" class="btn">Export Tracking</button>
-        <input type="file" id="importData" style="display:none;"/>
-        <button id="importDataBtn" class="btn">Import Tracking</button>
+
+        <div class="row">
+            <div class="col s12">
+                <button id="exportData" class="btn">Export Tracking</button>
+                <input type="file" id="importData" style="display:none;"/>
+                <button id="importDataBtn" class="btn">Import Tracking</button>
+            </div>
+            <div class="col s12 right-align">
+                <button class="btn red lighten-2" id="clear-filters">Clear Filters</button>
+                <button class="btn grey darken-3" id="clear-all">Clear All</button>
+            </div>
+        </div>
     </div>
 
     <table id="unitTable" class="highlight responsive-table">
@@ -151,6 +161,7 @@
                 <label for="selectAllCompleted"></label><input type="checkbox" id="selectAllCompleted"/>
             </th>
         </tr>
+
         </thead>
         <tbody></tbody>
     </table>

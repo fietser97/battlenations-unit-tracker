@@ -21,6 +21,17 @@ async function minifyJS(file) {
     await fs.outputFile(outputPath, result.code);
     console.log(`Minified JS: ${outputPath}`);
 }
+function minifyJSON(file) {
+    const inputPath = path.join(SRC, file);
+    const outputPath = path.join(DEST, file);
+
+    const raw = fs.readFileSync(inputPath, "utf8");
+    const parsed = JSON.parse(raw);
+    const minified = JSON.stringify(parsed); // no spacing = minified
+
+    fs.outputFileSync(outputPath, minified);
+    console.log(`Minified JSON: ${outputPath}`);
+}
 
 function updateHtmlScriptReference(file, replacements) {
     const inputPath = path.join(SRC, file);
@@ -46,9 +57,9 @@ function copyStatic(file) {
 // Customize your file list
 async function run() {
     await minifyJS("js/main.js");
-    copyStatic("data/unit_data.json");
+    minifyJSON("data/unit_data.json");
 
-// Replace reference in HTML
+    // Replace reference in HTML
     updateHtmlScriptReference("index.html", {
         '<script src="js/main.js"></script>': '<script src="js/main.min.js"></script>'
     });
