@@ -106,11 +106,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     $('#unitTable .owned-checkbox').off().on('change', function () {
                         const unit = $(this).data('unit');
                         updateTracking(unit, 'owned', this.checked);
+                        document.getElementById('torank-count').textContent = `${countTotalRanksTodo() - countRankedUnits()}`;
+                        document.getElementById('owned-count').textContent = `${countOwnedUnits()}`;
                     });
                     $('#unitTable .ranked-checkbox').off().on('change', function () {
                         const unit = $(this).data('unit');
                         const rank = $(this).data('rank');
                         updateTracking(unit, 'ranked', this.checked, rank); // Specific rank only
+                        document.getElementById('ranked-count').textContent = `${countRankedUnits()}`;
                     });
                 }
             });
@@ -158,41 +161,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
         });
-    setTimeout(() => {
-        const lengthSelect = document.querySelector('#unitTable_length select');
-        if (lengthSelect && M.FormSelect.getInstance(lengthSelect)) {
-            M.FormSelect.getInstance(lengthSelect).destroy();
-            lengthSelect.classList.remove('browser-default'); // Optional
-        }
-    }, 100);
-
-    function populateFilters() {
-        const addOptions = (id, values) => {
-            const select = document.getElementById(id);
-            values.forEach(v => {
-                const opt = document.createElement("option");
-                opt.value = v;
-                opt.textContent = v || "(none)";
-                select.appendChild(opt);
-            });
-        };
-
-        const uniqueVals = (field) =>
-            [...new Set(unitData.map(d => d[field]).filter(v => v !== undefined))];
-
-        addOptions("building_filter", uniqueVals("building_requirement"));
-        addOptions("other_filter", uniqueVals("other_requirements"));
-        addOptions("category_filter", uniqueVals("category"));
-    }
-
-    function filterTable() {
-        if (table && typeof table.draw === 'function') {
-            table.draw();
-        } else {
-            console.error('Unable to draw table');
-        }
-    }
-
 
     $.fn.dataTable.ext.search = []; // clear previous filters
 
@@ -301,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     setFilters(imported.filters);
                 }
 
-                table.draw(); // Redraw to apply checkbox states
+                drawTable(); // Redraw to apply checkbox states
             } catch (err) {
                 console.error('Invalid JSON file');
             }
@@ -309,72 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         reader.readAsText(file);
     });
-
-// Helpers
-    function getStoredTrackingData() {
-        return JSON.parse(localStorage.getItem('unitTracking') || '{}');
-    }
-
-    function getStoredValue(unitName, field, rank) {
-        const data = getStoredTrackingData();
-        const key = `${unitName}::${rank}`;
-        return data[key]?.[field] || false;
-    }
-
-    function updateTracking(unitName, field, value, rank = null) {
-        const data = getStoredTrackingData();
-
-        if (field === 'ranked' && rank !== null) {
-            // Only update specific rank
-            const key = `${unitName}::${rank}`;
-            if (!data[key]) data[key] = {};
-            data[key][field] = value;
-
-            localStorage.setItem('unitTracking', JSON.stringify(data));
-            $(`.${field}-checkbox[data-unit="${unitName}"][data-rank="${rank}"]`).prop('checked', value);
-
-        } else if (field === 'owned') {
-            // Update all ranks of this unit
-            unitData.forEach(unit => {
-                if (unit.unit_name === unitName) {
-                    const key = `${unit.unit_name}::${unit.rank}`;
-                    if (!data[key]) data[key] = {};
-                    data[key][field] = value;
-                }
-            });
-
-            localStorage.setItem('unitTracking', JSON.stringify(data));
-            $(`.${field}-checkbox[data-unit="${unitName}"]`).prop('checked', value);
-        }
-    }
-
-    function getCurrentFilters() {
-        return {
-            building_filter: $('#building_filter').val(),
-            other_filter: $('#other_filter').val(),
-            category_filter: $('#category_filter').val(),
-            nanopods_filter: $('#nanopods_filter').val(),
-            rank_filter: $('#rank-filter').val(),
-            filter_owned: $('#filter-owned').prop('checked'),
-            filter_ranked: $('#filter-ranked').prop('checked'),
-            unlock_level_range: unlockSlider.noUiSlider.get().map(Number)
-        };
-    }
-
-    function setFilters(filters) {
-        if (!filters) return;
-        $('#building_filter').val(filters.building_filter).formSelect();
-        $('#other_filter').val(filters.other_filter).formSelect();
-        $('#category_filter').val(filters.category_filter).formSelect();
-        $('#nanopods_filter').val(filters.nanopods_filter).formSelect();
-        $('#rank-filter').val(filters.rank_filter).formSelect();
-        $('#filter-owned').prop('checked', filters.filter_owned);
-        $('#filter-ranked').prop('checked', filters.filter_ranked);
-        if (filters.unlock_level_range && filters.unlock_level_range.length === 2) {
-            unlockSlider.noUiSlider.set(filters.unlock_level_range);
-        }
-    }
-})
+});
 // Owned controls
 $('#owned-select-all').on('click', () => updateOwnedCheckboxes(true));
 $('#owned-deselect-all').on('click', () => updateOwnedCheckboxes(false));
@@ -404,6 +307,73 @@ $('#filter-unique').on('change', () => table.draw());
 
 document.getElementById('clear-filters').addEventListener('click', () => {
     // Reset all select filters
+    clearFilters();
+});
+
+document.getElementById('clear-all').addEventListener('click', () => {
+    // Clear localStorage tracking
+    localStorage.removeItem('unitTracking');
+
+    // Also reset filters
+    clearFilters(true);
+
+    // Uncheck all checkboxes visually
+    $('.owned-checkbox, .ranked-checkbox').prop('checked', false);
+
+    drawTable();
+});
+
+function isUnique(unitName) {
+    if (seenUnitNames.has(unitName)) {
+        return false;
+    } else {
+        seenUnitNames.add(unitName);
+        return true;
+    }
+}
+
+function countRankedUnits() {
+    const tracking = getStoredTrackingData();
+    let count = 0;
+    for (const unit in tracking) {
+        if (tracking[unit].ranked) count++;
+    }
+    return count;
+}
+
+function countTotalRanksTodo() {
+    const tracking = getStoredTrackingData();
+    let count = 0;
+    for (const unit in tracking) {
+        if (tracking[unit].owned) count++;
+    }
+    return count - countRankedUnits();
+}
+
+function countOwnedUnits() {
+    const tracking = getStoredTrackingData();
+    let unique = new Set();
+    for (const unit in tracking) {
+        const [unitName, rank] = unit.split('::');
+        if (tracking[unit].owned) {
+            unique.add(unitName);
+        }
+    }
+    return unique.size;
+}
+
+function getStoredTrackingData() {
+    return JSON.parse(localStorage.getItem('unitTracking') || '{}');
+}
+
+function drawTable() {
+    document.getElementById('torank-count').textContent = `${countTotalRanksTodo() - countRankedUnits()}`;
+    document.getElementById('owned-count').textContent = `${countOwnedUnits()}`;
+    document.getElementById('ranked-count').textContent = `${countRankedUnits()}`;
+    table.draw();
+}
+
+function clearFilters(noReload = false) {
     const filters = ['building_filter', 'other_filter', 'category_filter', 'rank-filter', 'nanopods_filter'];
     filters.forEach(id => {
         const el = document.getElementById(id);
@@ -419,33 +389,96 @@ document.getElementById('clear-filters').addEventListener('click', () => {
     if (unlockSlider?.noUiSlider) {
         unlockSlider.noUiSlider.set([1, 70]);
     }
-
     // Uncheck owned/ranked filters
     $('#filter-owned').prop('checked', false);
     $('#filter-ranked').prop('checked', false);
     $('#filter-unique').prop('checked', false);
+    if (noReload === false) {
+        table.draw();
+    }
+}
 
-    table.draw();
-});
+function populateFilters() {
+    const addOptions = (id, values) => {
+        const select = document.getElementById(id);
+        values.forEach(v => {
+            const opt = document.createElement("option");
+            opt.value = v;
+            opt.textContent = v || "(none)";
+            select.appendChild(opt);
+        });
+    };
 
-document.getElementById('clear-all').addEventListener('click', () => {
-    // Clear localStorage tracking
-    localStorage.removeItem('unitTracking');
+    const uniqueVals = (field) =>
+        [...new Set(unitData.map(d => d[field]).filter(v => v !== undefined))];
 
-    // Also reset filters
-    document.getElementById('clear-filters').click();
+    addOptions("building_filter", uniqueVals("building_requirement"));
+    addOptions("other_filter", uniqueVals("other_requirements"));
+    addOptions("category_filter", uniqueVals("category"));
+}
+function getStoredValue(unitName, field, rank) {
+    const data = getStoredTrackingData();
+    const key = `${unitName}::${rank}`;
+    return data[key]?.[field] || false;
+}
 
-    // Uncheck all checkboxes visually
-    $('.owned-checkbox, .ranked-checkbox').prop('checked', false);
+function updateTracking(unitName, field, value, rank = null) {
+    const data = getStoredTrackingData();
 
-    table.draw();
-});
+    if (field === 'ranked' && rank !== null) {
+        // Only update specific rank
+        const key = `${unitName}::${rank}`;
+        if (!data[key]) data[key] = {};
+        data[key][field] = value;
 
-function isUnique(unitName) {
-    if (seenUnitNames.has(unitName)) {
-        return false;
+        localStorage.setItem('unitTracking', JSON.stringify(data));
+        $(`.${field}-checkbox[data-unit="${unitName}"][data-rank="${rank}"]`).prop('checked', value);
+
+    } else if (field === 'owned') {
+        // Update all ranks of this unit
+        unitData.forEach(unit => {
+            if (unit.unit_name === unitName) {
+                const key = `${unit.unit_name}::${unit.rank}`;
+                if (!data[key]) data[key] = {};
+                data[key][field] = value;
+            }
+        });
+
+        localStorage.setItem('unitTracking', JSON.stringify(data));
+        $(`.${field}-checkbox[data-unit="${unitName}"]`).prop('checked', value);
+    }
+}
+
+function getCurrentFilters() {
+    return {
+        building_filter: $('#building_filter').val(),
+        other_filter: $('#other_filter').val(),
+        category_filter: $('#category_filter').val(),
+        nanopods_filter: $('#nanopods_filter').val(),
+        rank_filter: $('#rank-filter').val(),
+        filter_owned: $('#filter-owned').prop('checked'),
+        filter_ranked: $('#filter-ranked').prop('checked'),
+        unlock_level_range: unlockSlider.noUiSlider.get().map(Number)
+    };
+}
+
+function setFilters(filters) {
+    if (!filters) return;
+    $('#building_filter').val(filters.building_filter).formSelect();
+    $('#other_filter').val(filters.other_filter).formSelect();
+    $('#category_filter').val(filters.category_filter).formSelect();
+    $('#nanopods_filter').val(filters.nanopods_filter).formSelect();
+    $('#rank-filter').val(filters.rank_filter).formSelect();
+    $('#filter-owned').prop('checked', filters.filter_owned);
+    $('#filter-ranked').prop('checked', filters.filter_ranked);
+    if (filters.unlock_level_range && filters.unlock_level_range.length === 2) {
+        unlockSlider.noUiSlider.set(filters.unlock_level_range);
+    }
+}
+function filterTable() {
+    if (table && typeof table.draw === 'function') {
+        table.draw();
     } else {
-        seenUnitNames.add(unitName);
-        return true;
+        console.error('Unable to draw table');
     }
 }
