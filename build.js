@@ -13,7 +13,7 @@ fs.ensureDirSync(DEST);
 // Minify JS
 async function minifyJS(file) {
     const inputPath = path.join(SRC, file);
-    const outputPath = path.join(DEST, file.replace(/\.js$/, ".min.js"));
+    const outputPath = path.join(DEST, file.replace(/\.js$/, ".js"));
 
     const code = await fs.readFile(inputPath, "utf8");
     const result = await terser.minify(code);
@@ -57,11 +57,16 @@ function copyStatic(file) {
 // Customize your file list
 async function run() {
     await minifyJS("js/main.js");
+    await minifyJS("js/counters.js");
+    await minifyJS("js/import-export.js");
+    await minifyJS("js/table-init.js");
+    await minifyJS("js/tracking.js");
+    await minifyJS("js/utils.js");
     minifyJSON("data/unit_data.json");
 
     // Replace reference in HTML
     updateHtmlScriptReference("index.html", {
-        '<script src="js/main.js"></script>': '<script src="js/main.min.js"></script>'
+        'tmpvalue':'feddevanderlist.battlenations-unit-tracker'
     });
 
     copyStatic("css/styles.css");

@@ -28,13 +28,11 @@ body.dark-mode label {
     color: #b0bec5 !important;
 }
 
-body.dark-mode .dropdown-content {
+body.dark-mode .dropdown-content .select-dropdown {
     background-color: #263238;
-}
-
-body.dark-mode .dropdown-content li > span {
     color: #e0e0e0;
 }
+
 .filter-buttons {
     margin-top: 1rem;
     display: flex;
@@ -63,4 +61,30 @@ table.dataTable td, table.dataTable th {
     padding: 12px 10px;
     vertical-align: middle;
 }
+/* Hide the original select inside the wrapper */
+.select-wrapper select {
+    display: none !important;
+}
 
+table#unitTable tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+/* Row hover and selected for light mode */
+table.highlight > tbody > tr:hover {
+    background-color: #bbbbbb;
+}
+
+/* Row hover and selected for dark mode */
+.dark-mode table.highlight > tbody > tr:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Subtle light hover */
+}
+
+.dark-mode table.dataTable tbody tr.selected,
+.dark-mode table.highlight > tbody > tr.selected {
+    background-color: rgba(33, 150, 243, 0.2); /* Material Blue with transparency */
+}
+/* Light mode highlight animation */
+.highlight-change {
+    background-color: #afb42b33  !important; /* Material Yellow 300 */
+    transition: background-color 0.5s ease;
+}

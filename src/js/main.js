@@ -1,4 +1,3 @@
-let table;
 let unitData = [];
 let unlockSlider;
 let seenUnitNames = new Set();
@@ -29,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         connect: true,
         step: 1,
         tooltips: true,
+        stateSave: true,
         range: {
             min: 1,
             max: 70
@@ -44,79 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             unitData = data;
             populateFilters();
-
-            table = $('#unitTable').DataTable({
-                data: unitData,
-                pageLength: 100,
-                responsive: true,
-                order: [[2, 'asc']],
-                columns: [
-                    {data: 'unit_name', title: 'Unit Name'},
-                    {data: 'rank', title: 'Rank'},
-                    {data: 'sp', title: 'SP'},
-                    {data: 'promotion_reward', title: 'Promotion Reward'},
-                    {
-                        data: null,
-                        title: 'Owned',
-                        render: function (data, type, row) {
-                            const checked = getStoredValue(row.unit_name, 'owned', row.rank) ? 'checked' : '';
-                            return `<label><input type="checkbox" class="owned-checkbox" data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span></span></label>`;
-                        }
-                    },
-                    {
-                        data: null,
-                        title: 'Ranked',
-                        render: function (data, type, row) {
-                            const checked = getStoredValue(row.unit_name, 'ranked', row.rank) ? 'checked' : '';
-                            return `<label><input type="checkbox" class="ranked-checkbox" data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span></span></label>`;
-                        }
-                    },
-                    {data: 'unlock_level', title: 'Unlock Level'},
-                    {data: 'category', title: 'Category'},
-                    {data: 'unit_type', title: 'Unit Type'},
-                    {data: 'building_requirement', title: 'Building Requirement'},
-                    {data: 'other_requirements', title: 'Other Requirements'},
-
-                    {
-                        data: 'requires_nanopods',
-                        title: 'Requires Nanopods',
-                        render: data => data ? 'Yes' : 'No'
-                    }
-                ],
-                drawCallback: function () {
-                    const tracking = getStoredTrackingData();
-
-                    $('#unitTable .owned-checkbox').each(function () {
-                        const unit = $(this).data('unit');
-                        const rank = $(this).data('rank');
-                        const key = `${unit}::${rank}`;
-                        const checked = tracking[key]?.owned || false;
-                        $(this).prop('checked', checked);
-                    });
-
-                    $('#unitTable .ranked-checkbox').each(function () {
-                        const unit = $(this).data('unit');
-                        const rank = $(this).data('rank');
-                        const key = `${unit}::${rank}`;
-                        const checked = tracking[key]?.ranked || false;
-                        $(this).prop('checked', checked);
-                    });
-
-                    // (Re)bind event handlers
-                    $('#unitTable .owned-checkbox').off().on('change', function () {
-                        const unit = $(this).data('unit');
-                        updateTracking(unit, 'owned', this.checked);
-                        document.getElementById('torank-count').textContent = `${countTotalRanksTodo() - countRankedUnits()}`;
-                        document.getElementById('owned-count').textContent = `${countOwnedUnits()}`;
-                    });
-                    $('#unitTable .ranked-checkbox').off().on('change', function () {
-                        const unit = $(this).data('unit');
-                        const rank = $(this).data('rank');
-                        updateTracking(unit, 'ranked', this.checked, rank); // Specific rank only
-                        document.getElementById('ranked-count').textContent = `${countRankedUnits()}`;
-                    });
-                }
-            });
+            initTable(data);
 
             $('select').formSelect();
             $('#rank-filter').formSelect();
@@ -131,153 +59,107 @@ document.addEventListener('DOMContentLoaded', function () {
                 seenUnitNames = new Set();
                 table.draw();
             });
-            document.getElementById('currentVersionBtn').addEventListener('click', () => {
-                // 1. Set unlock level slider max to 46, min remains 1
-                unlockSlider.noUiSlider.set([1, 46]);
 
-                // 2. Select "other_requirements" all options except excluded ones
-                const otherFilter = document.getElementById('other_filter');
+            $.fn.dataTable.ext.search = []; // clear previous filters
 
-                // First deselect all
-                for (let option of otherFilter.options) {
-                    option.selected = false;
+            $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+                if (dataIndex === 0) {
+                    seenUnitNames = new Set();
                 }
+                const row = unitData[dataIndex];
+                if (!row) return false;
 
-                // Select options NOT in excludeOthers
-                for (let option of otherFilter.options) {
-                    if (!excludeOthers.includes(option.value)) {
-                        option.selected = true;
-                    }
+                // Unlock level
+                let [min, max] = [1, 100];
+                if (unlockSlider?.noUiSlider) {
+                    [min, max] = unlockSlider.noUiSlider.get().map(Number);
                 }
-
-                // Refresh the Materialize select UI
-                if (M?.FormSelect) {
-                    M.FormSelect.getInstance(otherFilter)?.destroy();
-                    M.FormSelect.init(otherFilter);
+                let level = row.unlock_level;
+                if (isNaN(level) || level === null || level === undefined) {
+                    level = 1;
                 }
+                if (level < min || level > max) return false;
 
-                // Finally redraw the table with new filters applied
-                table.draw();
+                // Rank
+                const selectedRanks = $('#rank-filter').val();
+                if (selectedRanks?.length && !selectedRanks.includes(row.rank)) return false;
+
+                // Building / Other / Category
+                const selected = (id) => Array.from(document.getElementById(id).selectedOptions).map(opt => opt.value);
+                const buildingFilter = selected('building_filter');
+                const otherFilter = selected('other_filter');
+                const categoryFilter = selected('category_filter');
+                const nanopodVal = document.getElementById("nanopods_filter").value;
+
+                const matchBuilding = buildingFilter.length === 0 || buildingFilter.includes(row.building_requirement);
+                const matchOther = otherFilter.length === 0 || otherFilter.includes(row.other_requirements);
+                const matchCategory = categoryFilter.length === 0 || categoryFilter.includes(row.category);
+                const matchNano =
+                    nanopodVal === "all" ||
+                    (nanopodVal === "true" && row.requires_nanopods) ||
+                    (nanopodVal === "false" && !row.requires_nanopods);
+
+                // Owned / Ranked
+                const tracking = getStoredTrackingData();
+                const key = `${row.unit_name}::${row.rank}`;
+                const status = tracking[key] || {};
+                const filterOwned = $('#filter-owned').prop('checked');
+                const filterRanked = $('#filter-ranked').prop('checked');
+                const ownedPass = !filterOwned || status.owned;
+                const rankedPass = !filterRanked || !status.ranked;
+
+                // Unique unit name filter
+                const uniqueOnly = $('#filter-unique').prop('checked');
+                if (uniqueOnly && !isUnique(row.unit_name)) return false;
+
+                return matchBuilding && matchOther && matchCategory && matchNano && ownedPass && rankedPass;
             });
 
+            $('#filter-owned, #filter-ranked').on('change', () => table.draw());
         });
-
-    $.fn.dataTable.ext.search = []; // clear previous filters
-
-    $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-        if (dataIndex === 0) {
-            seenUnitNames = new Set();
-        }
-        const row = unitData[dataIndex];
-        if (!row) return false;
-
-        // Unlock level
-        let [min, max] = [1, 100];
-        if (unlockSlider?.noUiSlider) {
-            [min, max] = unlockSlider.noUiSlider.get().map(Number);
-        }
-        let level = row.unlock_level;
-        if (isNaN(level) || level === null || level === undefined) {
-            level = 1;
-        }
-        if (level < min || level > max) return false;
-
-        // Rank
-        const selectedRanks = $('#rank-filter').val();
-        if (selectedRanks?.length && !selectedRanks.includes(row.rank)) return false;
-
-        // Building / Other / Category
-        const selected = (id) => Array.from(document.getElementById(id).selectedOptions).map(opt => opt.value);
-        const buildingFilter = selected('building_filter');
-        const otherFilter = selected('other_filter');
-        const categoryFilter = selected('category_filter');
-        const nanopodVal = document.getElementById("nanopods_filter").value;
-
-        const matchBuilding = buildingFilter.length === 0 || buildingFilter.includes(row.building_requirement);
-        const matchOther = otherFilter.length === 0 || otherFilter.includes(row.other_requirements);
-        const matchCategory = categoryFilter.length === 0 || categoryFilter.includes(row.category);
-        const matchNano =
-            nanopodVal === "all" ||
-            (nanopodVal === "true" && row.requires_nanopods) ||
-            (nanopodVal === "false" && !row.requires_nanopods);
-
-        // Owned / Ranked
-        const tracking = getStoredTrackingData();
-        const key = `${row.unit_name}::${row.rank}`;
-        const status = tracking[key] || {};
-        const filterOwned = $('#filter-owned').prop('checked');
-        const filterRanked = $('#filter-ranked').prop('checked');
-        const ownedPass = !filterOwned || status.owned;
-        const rankedPass = !filterRanked || !status.ranked;
-
-        // Unique unit name filter
-        const uniqueOnly = $('#filter-unique').prop('checked');
-        if (uniqueOnly && !isUnique(row.unit_name)) return false;
-
-        return matchBuilding && matchOther && matchCategory && matchNano && ownedPass && rankedPass;
-    });
-
-    $('#filter-owned, #filter-ranked').on('change', () => table.draw());
-
-    // Theme toggle
-    document.getElementById("themeToggle").addEventListener("change", function () {
-        document.body.classList.toggle("dark-mode", this.checked);
-    });
-
-    $('#exportData').on('click', () => {
-        const data = {
-            tracking: getStoredTrackingData(),
-            filters: getCurrentFilters()
-        };
-
-        const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
-        const url = URL.createObjectURL(blob);
-
-        const a = document.createElement('a');
-        const now = new Date();
-        const timestamp = now.toISOString().replace(/[:T]/g, '-').split('.')[0]; // e.g. 2025-07-20_14-35-22
-        a.href = url;
-        a.download = `unitTracking_${timestamp}.json`;
-        a.click();
-    });
-
-    // Import
-    $('#importDataBtn').on('click', () => $('#importData').click());
-    $('#importData').on('change', function (event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = function (e) {
-            try {
-                const imported = JSON.parse(e.target.result);
-
-                if (!imported.tracking || typeof imported.tracking !== 'object') {
-                    alert('Invalid format: missing or malformed "tracking" field.');
-                    return;
-                }
-
-                const allKeysValid = Object.keys(imported.tracking).every(k => k.includes('::'));
-                if (!allKeysValid) {
-                    alert('Import failed: All tracking keys must use "unit_name::rank" format.');
-                    return;
-                }
-
-                // Store new tracking data
-                localStorage.setItem('unitTracking', JSON.stringify(imported.tracking));
-
-                if (imported.filters) {
-                    setFilters(imported.filters);
-                }
-
-                drawTable(); // Redraw to apply checkbox states
-            } catch (err) {
-                console.error('Invalid JSON file');
-            }
-        };
-
-        reader.readAsText(file);
-    });
+    drawTable();
 });
+document.getElementById('currentVersionBtn').addEventListener('click', () => {
+    // 1. Set unlock level slider max to 46, min remains 1
+    unlockSlider.noUiSlider.set([1, 46]);
+
+    // 2. Select "other_requirements" all options except excluded ones
+    const otherFilter = document.getElementById('other_filter');
+
+    // First deselect all
+    for (const option of otherFilter.options) {
+        option.selected = false;
+    }
+
+    // Select options NOT in excludeOthers
+    for (const option of otherFilter.options) {
+        if (!excludeOthers.includes(option.value)) {
+            option.selected = true;
+        }
+    }
+
+    // Refresh the Materialize select UI
+    if (M?.FormSelect) {
+        M.FormSelect.getInstance(otherFilter)?.destroy();
+        M.FormSelect.init(otherFilter);
+    }
+
+    // Finally redraw the table with new filters applied
+    table.draw();
+});
+// Theme toggle
+document.getElementById("themeToggle").addEventListener("change", function () {
+    document.body.classList.toggle("dark-mode", this.checked);
+});
+
+document.getElementById('exportData').addEventListener('click', exportData);
+document.getElementById('importDataBtn').addEventListener('click', () => {
+    document.getElementById('importData').click();
+});
+document.getElementById('importData').addEventListener('change', function (e) {
+    importData(e.target.files[0]);
+});
+// Import
 // Owned controls
 $('#owned-select-all').on('click', () => updateOwnedCheckboxes(true));
 $('#owned-deselect-all').on('click', () => updateOwnedCheckboxes(false));
@@ -290,17 +172,22 @@ $('#ranked-deselect-all').on('click', () => updateRankedCheckboxes(false));
 function updateOwnedCheckboxes(checked) {
     $('#unitTable tbody tr:visible .owned-checkbox').each(function () {
         if ($(this).prop('checked') !== checked) {
-            $(this).prop('checked', checked).trigger('change');
+            const unit = $(this).data('unit');
+            updateTracking(unit, 'owned', checked);
         }
     });
+    drawTable();
 }
 
 function updateRankedCheckboxes(checked) {
     $('#unitTable tbody tr:visible .ranked-checkbox').each(function () {
         if ($(this).prop('checked') !== checked) {
-            $(this).prop('checked', checked).trigger('change');
+            const unit = $(this).data('unit');
+            const rank = $(this).data('rank');
+            updateTracking(unit, 'ranked', checked, rank);
         }
     });
+    drawTable();
 }
 
 $('#filter-unique').on('change', () => table.draw());
@@ -330,40 +217,6 @@ function isUnique(unitName) {
         seenUnitNames.add(unitName);
         return true;
     }
-}
-
-function countRankedUnits() {
-    const tracking = getStoredTrackingData();
-    let count = 0;
-    for (const unit in tracking) {
-        if (tracking[unit].ranked) count++;
-    }
-    return count;
-}
-
-function countTotalRanksTodo() {
-    const tracking = getStoredTrackingData();
-    let count = 0;
-    for (const unit in tracking) {
-        if (tracking[unit].owned) count++;
-    }
-    return count - countRankedUnits();
-}
-
-function countOwnedUnits() {
-    const tracking = getStoredTrackingData();
-    let unique = new Set();
-    for (const unit in tracking) {
-        const [unitName, rank] = unit.split('::');
-        if (tracking[unit].owned) {
-            unique.add(unitName);
-        }
-    }
-    return unique.size;
-}
-
-function getStoredTrackingData() {
-    return JSON.parse(localStorage.getItem('unitTracking') || '{}');
 }
 
 function drawTable() {
@@ -416,38 +269,7 @@ function populateFilters() {
     addOptions("other_filter", uniqueVals("other_requirements"));
     addOptions("category_filter", uniqueVals("category"));
 }
-function getStoredValue(unitName, field, rank) {
-    const data = getStoredTrackingData();
-    const key = `${unitName}::${rank}`;
-    return data[key]?.[field] || false;
-}
 
-function updateTracking(unitName, field, value, rank = null) {
-    const data = getStoredTrackingData();
-
-    if (field === 'ranked' && rank !== null) {
-        // Only update specific rank
-        const key = `${unitName}::${rank}`;
-        if (!data[key]) data[key] = {};
-        data[key][field] = value;
-
-        localStorage.setItem('unitTracking', JSON.stringify(data));
-        $(`.${field}-checkbox[data-unit="${unitName}"][data-rank="${rank}"]`).prop('checked', value);
-
-    } else if (field === 'owned') {
-        // Update all ranks of this unit
-        unitData.forEach(unit => {
-            if (unit.unit_name === unitName) {
-                const key = `${unit.unit_name}::${unit.rank}`;
-                if (!data[key]) data[key] = {};
-                data[key][field] = value;
-            }
-        });
-
-        localStorage.setItem('unitTracking', JSON.stringify(data));
-        $(`.${field}-checkbox[data-unit="${unitName}"]`).prop('checked', value);
-    }
-}
 
 function getCurrentFilters() {
     return {
@@ -475,10 +297,16 @@ function setFilters(filters) {
         unlockSlider.noUiSlider.set(filters.unlock_level_range);
     }
 }
+
 function filterTable() {
     if (table && typeof table.draw === 'function') {
         table.draw();
     } else {
         console.error('Unable to draw table');
     }
+}
+
+function highlight(row) {
+    row.addClass('highlight-change');
+    setTimeout(() => row.removeClass('highlight-change'), 500);
 }
