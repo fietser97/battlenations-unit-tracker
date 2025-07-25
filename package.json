@@ -4,7 +4,10 @@
   "description": "a rank tracker for bn units",
   "main": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "http-server ./src -c-1",
+    "test": "start-server-and-test serve 8080 test:e2e",
+    "test:e2e": "playwright test",
+    "install:playwright": "npx playwright install"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,13 @@
   },
   "homepage": "https://github.com/feddevanderlist/battlenations-units#readme",
   "dependencies": {
+    "@playwright/test": "^1.54.1",
     "fs-extra": "^11.3.0",
-    "terser": "^5.43.1"
+    "playwright": "^1.54.1",
+    "terser": "^5.43.1",
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "start-server-and-test": "^2.0.12"
   }
 }

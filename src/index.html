@@ -14,43 +14,43 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="light-mode">
+<body class="light-mode" data-testid="body">
 
-<div class="container-fluid">
+<div class="container-fluid" data-testid="container">
 
-    <h4 class="center-align">Battle Nations Unit Tracker</h4>
-    <div class="right-align">
+    <h4 class="center-align" data-testid="page-title">Battle Nations Unit Tracker</h4>
+    <div class="right-align" data-testid="theme-toggle-wrapper">
         <div class="switch col s12">
             <label>
                 Light
-                <input id="themeToggle" type="checkbox">
+                <input id="themeToggle" type="checkbox" data-testid="theme-toggle"/>
                 <span class="lever"></span>
                 Dark
             </label>
         </div>
     </div>
-    <div class="text-accent-1 center-align" style="margin-bottom: 10px;">
+    <div class="text-accent-1 center-align" style="margin-bottom: 10px;" data-testid="description">
         After playing Battle Nations in it's first form I have been waiting for something like this.
         Now I have the knowledge to make it myself. <br>
         The tracker tracks the units u own and have ranked.<br>
         If you run into any issues or have feature requests goto:<a
-            href="https://github.com/feddevanderlist/battlenations-unit-tracker/issues">
+            href="https://github.com/feddevanderlist/battlenations-unit-tracker/issues" data-testid="github-issues-link">
         https://github.com/feddevanderlist/battlenations-unit-tracker/issues</a>
     </div>
-    <div class="row">
-        <div class="col s12 right-align">
-            <button id="exportData" class="btn">Export Tracking</button>
-            <input type="file" id="importData" style="display:none;"/>
-            <button id="importDataBtn" class="btn">Import Tracking</button>
+    <div class="row" data-testid="main-row">
+        <div class="col s12 right-align" data-testid="import-export-buttons">
+            <button id="exportData" class="btn" data-testid="export-button">Export Tracking</button>
+            <input type="file" id="importData" style="display:none;" data-testid="import-file-input"/>
+            <button id="importDataBtn" class="btn" data-testid="import-button">Import Tracking</button>
         </div>
 
-        <div class="row filter-section">
-            <div class="input-field col s8 m3">
-                <div id="unlock-level-slider" class="my-3"></div>
-                <p id="unlock-range-display" class="range-label">Level: 1 - 70</p>
+        <div class="row filter-section" data-testid="filters-row-1">
+            <div class="input-field col s8 m3" data-testid="unlock-level-filter">
+                <div id="unlock-level-slider" class="my-3" data-testid="unlock-level-slider"></div>
+                <p id="unlock-range-display" class="range-label" data-testid="unlock-range-display">Level: 1 - 70</p>
             </div>
-            <div class="input-field col s8 m3">
-                <select id="rank-filter" multiple>
+            <div class="input-field col s8 m3" data-testid="rank-filter-wrapper">
+                <select id="rank-filter" multiple data-testid="rank-filter">
                     <option value="" disabled>Select Rank(s)</option>
                     <option value="2">Rank 2</option>
                     <option value="3">Rank 3</option>
@@ -63,9 +63,9 @@
                 </select>
                 <label>Filter by Rank</label>
             </div>
-            <div class="col s8 m3">
+            <div class="col s8 m3" data-testid="nanopods-filter-wrapper">
                 <div class="input-field">
-                    <select id="nanopods_filter">
+                    <select id="nanopods_filter" data-testid="nanopods-filter">
                         <option value="all" selected>All</option>
                         <option value="true">Yes</option>
                         <option value="false">No</option>
@@ -73,145 +73,144 @@
                     <label>Requires Nanopods</label>
                 </div>
             </div>
-            <div class="col s8 m3">
+            <div class="col s8 m3" data-testid="checkbox-filters">
                 <div>
                     <label>
-                        <input type="checkbox" id="filter-owned"/>
+                        <input type="checkbox" id="filter-owned" data-testid="checkbox-filter-owned"/>
                         <span>Owned only</span>
                     </label>
                     <br>
                     <label>
-                        <input type="checkbox" id="filter-ranked"/>
+                        <input type="checkbox" id="filter-ranked" data-testid="checkbox-filter-ranked"/>
                         <span>Hide ranked</span>
                     </label>
                 </div>
                 <label>
-                    <input type="checkbox" id="filter-unique">
+                    <input type="checkbox" id="filter-unique" data-testid="checkbox-filter-unique">
                     <span>Show Unique Units Only</span>
                 </label>
             </div>
         </div>
 
-        <div class="row filter-section">
-            <div class="col s8 m3">
+        <div class="row filter-section" data-testid="filters-row-2">
+            <div class="col s8 m3" data-testid="building-filter-wrapper">
                 <div class="input-field">
-                    <select multiple id="building_filter"></select>
+                    <select multiple id="building_filter" data-testid="building-filter"></select>
                     <label>Building Requirement</label>
                 </div>
             </div>
 
-            <div class="col s8 m3">
+            <div class="col s8 m3" data-testid="other-filter-wrapper">
                 <div class="input-field">
-                    <select multiple id="other_filter"></select>
+                    <select multiple id="other_filter" data-testid="other-filter"></select>
                     <label>Other Requirements</label>
                 </div>
             </div>
 
-            <div class="col s8 m3">
+            <div class="col s8 m3" data-testid="category-filter-wrapper">
                 <div class="input-field">
-                    <select multiple id="category_filter"></select>
+                    <select multiple id="category_filter" data-testid="category-filter"></select>
                     <label>Category</label>
                 </div>
             </div>
-            <div class="col s8 m3">
+            <div class="col s8 m3" data-testid="owned-ranked-actions">
                 <div>
                     <strong>Owned:</strong>
                     <div>
-                        <a class="btn-small waves-effect waves-light" id="owned-select-all">Select All</a>
-                        <a class="btn-small waves-effect waves-light" id="owned-deselect-all">Deselect All</a>
+                        <a class="btn-small waves-effect waves-light" id="owned-select-all" data-testid="owned-select-all">Select All</a>
+                        <a class="btn-small waves-effect waves-light" id="owned-deselect-all" data-testid="owned-deselect-all">Deselect All</a>
                     </div>
                 </div>
                 <div>
                     <strong>Ranked:</strong>
                     <div>
-                        <a class="btn-small waves-effect waves-light" id="ranked-select-all">Select All</a>
-                        <a class="btn-small waves-effect waves-light" id="ranked-deselect-all">Deselect All</a>
+                        <a class="btn-small waves-effect waves-light" id="ranked-select-all" data-testid="ranked-select-all">Select All</a>
+                        <a class="btn-small waves-effect waves-light" id="ranked-deselect-all" data-testid="ranked-deselect-all">Deselect All</a>
                     </div>
                 </div>
                 <div>
-                    <a class="btn-small waves-effect waves-light" id="currentVersionBtn" style="margin: 1em 0;">Set
+                    <a class="btn-small waves-effect waves-light" id="currentVersionBtn" style="margin: 1em 0;" data-testid="current-version-btn">Set
                         filter
                         Current Version</a>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col s2">
+            <div class="row" data-testid="counts-row">
+                <div class="col s2" data-testid="ranked-done-count-wrapper">
                     <div class="card-panel grey lighten-4">
                         <span class="blue-text text-darken-2" style="font-weight: 500;">
                              Ranks done:
                             <span id="ranked-count" class="new badge blue white-text"
-                                  data-badge-caption="Ranks">0</span>
+                                  data-badge-caption="Ranks" data-testid="ranked-count">0</span>
                         </span>
                     </div>
                 </div>
-                <div class="col s2">
+                <div class="col s2" data-testid="ranked-todo-count-wrapper">
                     <div class="card-panel grey lighten-4">
                         <span class="blue-text text-darken-2" style="font-weight: 500;">
                             Ranks todo:
                             <span id="torank-count" class="new badge blue white-text"
-                                  data-badge-caption="Ranks">0</span>
+                                  data-badge-caption="Ranks" data-testid="torank-count">0</span>
                         </span>
                     </div>
                 </div>
-                <div class="col s2">
+                <div class="col s2" data-testid="owned-units-count-wrapper">
                     <div class="card-panel grey lighten-4">
                         <span class="blue-text text-darken-2" style="font-weight: 500;">
                             Owned units:
                             <span id="owned-count" class="new badge blue white-text"
-                                  data-badge-caption="Units">0</span>
+                                  data-badge-caption="Units" data-testid="owned-count">0</span>
                         </span>
                     </div>
                 </div>
-                <div class="col s6 right-align">
-                    <button class="btn red lighten-2" id="clear-filters">Clear Filters</button>
-                    <button class="btn grey darken-3" id="clear-all">Clear All</button>
+                <div class="col s6 right-align" data-testid="clear-buttons-wrapper">
+                    <button class="btn red lighten-2" id="clear-filters" data-testid="clear-filters-btn">Clear Filters</button>
+                    <button class="btn grey darken-3" id="clear-all" data-testid="clear-all-btn">Clear All</button>
                 </div>
 
             </div>
         </div>
 
-        <table id="unitTable" class="highlight striped responsive-table">
+        <table id="unitTable" class="highlight striped responsive-table" data-testid="unit-table">
             <thead>
-            <tr>
-                <th>Unit Name</th>
-                <th>Rank</th>
-                <th>SP</th>
-                <th>Promotion XP Reward</th>
-                <th>
+            <tr data-testid="unit-table-header-row">
+                <th data-testid="header-unit-name">Unit Name</th>
+                <th data-testid="header-rank">Rank</th>
+                <th data-testid="header-sp">SP</th>
+                <th data-testid="header-promotion-xp">Promotion XP Reward</th>
+                <th data-testid="header-owned">
                     Owned<br/>
-                    <label for="selectAllOwned"></label><input type="checkbox" id="selectAllOwned"/>
+                    <label for="selectAllOwned"></label><input type="checkbox" id="selectAllOwned" data-testid="select-all-owned"/>
                 </th>
-                <th>
+                <th data-testid="header-completed">
                     Completed<br/>
-                    <label for="selectAllCompleted"></label><input type="checkbox" id="selectAllCompleted"/>
+                    <label for="selectAllCompleted"></label><input type="checkbox" id="selectAllCompleted" data-testid="select-all-completed"/>
                 </th>
-                <th>Unlock Level</th>
-                <th>Category</th>
-                <th>Unit Type</th>
-                <th>Building Requirement</th>
-                <th>Other Requirements</th>
-                <th>Requires Nanopods</th>
+                <th data-testid="header-unlock-level">Unlock Level</th>
+                <th data-testid="header-category">Category</th>
+                <th data-testid="header-unit-type">Unit Type</th>
+                <th data-testid="header-building-req">Building Requirement</th>
+                <th data-testid="header-other-req">Other Requirements</th>
+                <th data-testid="header-nanopods">Requires Nanopods</th>
             </tr>
-
             </thead>
-            <tbody></tbody>
+            <tbody data-testid="unit-table-body"></tbody>
         </table>
         <img src="https://visitor-badge.laobi.icu/badge?page_id=tmpvalue"
-             alt="Visitor Badge">
+             alt="Visitor Badge" data-testid="visitor-badge">
     </div>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.8.1/dist/nouislider.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/counters.js"></script>
-    <script src="js/tracking.js"></script>
-    <script src="js/import-export.js"></script>
-    <script src="js/table-init.js"></script>
-    <script src="js/main.js"></script>
+</div>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nouislider@15.8.1/dist/nouislider.min.js"></script>
+<script src="./js/utils.js"></script>
+<script src="./js/counters.js"></script>
+<script src="./js/tracking.js"></script>
+<script src="./js/import-export.js"></script>
+<script src="./js/table-init.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>

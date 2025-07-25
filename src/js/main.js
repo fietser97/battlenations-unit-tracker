@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             $('#filter-owned, #filter-ranked').on('change', () => table.draw());
         });
-    drawTable();
+
 });
 document.getElementById('currentVersionBtn').addEventListener('click', () => {
     // 1. Set unlock level slider max to 46, min remains 1

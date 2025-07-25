@@ -18,14 +18,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'  # ✅ Cache node_modules automatically
 
       - name: Install dependencies
         run: npm ci  # ✅ Clean, reproducible installs (fail fast on mismatch)
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
       - name: Run build script
         run: node build.js
+
+      - name: Run Playwright tests
+        run: npm test
 
       - name: Check build output
         run: |
