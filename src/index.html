@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body class="light-mode" data-testid="body">
 
@@ -34,7 +34,8 @@
         Now I have the knowledge to make it myself. <br>
         The tracker tracks the units u own and have ranked.<br>
         If you run into any issues or have feature requests goto:<a
-            href="https://github.com/feddevanderlist/battlenations-unit-tracker/issues" data-testid="github-issues-link">
+            href="https://github.com/feddevanderlist/battlenations-unit-tracker/issues"
+            data-testid="github-issues-link">
         https://github.com/feddevanderlist/battlenations-unit-tracker/issues</a>
     </div>
     <div class="row" data-testid="main-row">
@@ -45,21 +46,25 @@
         </div>
 
         <div class="row filter-section" data-testid="filters-row-1">
-            <div class="input-field col s8 m3" data-testid="unlock-level-filter">
+            <div class="input-field col s6 m2" data-testid="unlock-level-filter">
                 <div id="unlock-level-slider" class="my-3" data-testid="unlock-level-slider"></div>
                 <p id="unlock-range-display" class="range-label" data-testid="unlock-range-display">Level: 1 - 70</p>
             </div>
-            <div class="input-field col s8 m3" data-testid="rank-filter-wrapper">
+            <div class="input-field col s6 m2" data-testid="unlock-rank-filter">
+                <div id="unlock-rank-slider" class="my-3" data-testid="unlock-rank-slider"></div>
+                <p id="unlock-rank-display" class="range-label" data-testid="unlock-rank-display">Unlock rank: 1 - 70</p>
+            </div>
+            <div class="input-field col s6 m2" data-testid="rank-filter-wrapper">
                 <select id="rank-filter" multiple data-testid="rank-filter">
                     <option value="" disabled>Select Rank(s)</option>
-                    <option value="2">Rank 2</option>
-                    <option value="3">Rank 3</option>
-                    <option value="4">Rank 4</option>
-                    <option value="5">Rank 5</option>
-                    <option value="6">Rank 6</option>
-                    <option value="7">Rank 7</option>
-                    <option value="8">Rank 8</option>
-                    <option value="9">Rank 9</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
                 </select>
                 <label>Filter by Rank</label>
             </div>
@@ -117,19 +122,24 @@
                 <div>
                     <strong>Owned:</strong>
                     <div>
-                        <a class="btn-small waves-effect waves-light" id="owned-select-all" data-testid="owned-select-all">Select All</a>
-                        <a class="btn-small waves-effect waves-light" id="owned-deselect-all" data-testid="owned-deselect-all">Deselect All</a>
+                        <a class="btn-small waves-effect waves-light" id="owned-select-all"
+                           data-testid="owned-select-all">Select All</a>
+                        <a class="btn-small waves-effect waves-light" id="owned-deselect-all"
+                           data-testid="owned-deselect-all">Deselect All</a>
                     </div>
                 </div>
                 <div>
                     <strong>Ranked:</strong>
                     <div>
-                        <a class="btn-small waves-effect waves-light" id="ranked-select-all" data-testid="ranked-select-all">Select All</a>
-                        <a class="btn-small waves-effect waves-light" id="ranked-deselect-all" data-testid="ranked-deselect-all">Deselect All</a>
+                        <a class="btn-small waves-effect waves-light" id="ranked-select-all"
+                           data-testid="ranked-select-all">Select All</a>
+                        <a class="btn-small waves-effect waves-light" id="ranked-deselect-all"
+                           data-testid="ranked-deselect-all">Deselect All</a>
                     </div>
                 </div>
                 <div>
-                    <a class="btn-small waves-effect waves-light" id="currentVersionBtn" style="margin: 1em 0;" data-testid="current-version-btn">Set
+                    <a class="btn-small waves-effect waves-light" id="currentVersionBtn" style="margin: 1em 0;"
+                       data-testid="current-version-btn">Set
                         filter
                         Current Version</a>
                 </div>
@@ -164,7 +174,8 @@
                     </div>
                 </div>
                 <div class="col s6 right-align" data-testid="clear-buttons-wrapper">
-                    <button class="btn red lighten-2" id="clear-filters" data-testid="clear-filters-btn">Clear Filters</button>
+                    <button class="btn red lighten-2" id="clear-filters" data-testid="clear-filters-btn">Clear Filters
+                    </button>
                     <button class="btn grey darken-3" id="clear-all" data-testid="clear-all-btn">Clear All</button>
                 </div>
 
@@ -178,15 +189,19 @@
                 <th data-testid="header-rank">Rank</th>
                 <th data-testid="header-sp">SP</th>
                 <th data-testid="header-promotion-xp">Promotion XP Reward</th>
+                <th data-testid="header-sp-on-kill">SP on Kill</th>
                 <th data-testid="header-owned">
                     Owned<br/>
-                    <label for="selectAllOwned"></label><input type="checkbox" id="selectAllOwned" data-testid="select-all-owned"/>
+                    <label for="selectAllOwned"></label><input type="checkbox" id="selectAllOwned"
+                                                               data-testid="select-all-owned"/>
                 </th>
                 <th data-testid="header-completed">
                     Completed<br/>
-                    <label for="selectAllCompleted"></label><input type="checkbox" id="selectAllCompleted" data-testid="select-all-completed"/>
+                    <label for="selectAllCompleted"></label><input type="checkbox" id="selectAllCompleted"
+                                                                   data-testid="select-all-completed"/>
                 </th>
-                <th data-testid="header-unlock-level">Unlock Level</th>
+                <th data-testid="header-unit-unlock-level">Unit unlock Level</th>
+                <th data-testid="header-pre-rank-requirement">Pre-Rank requirement</th>
                 <th data-testid="header-category">Category</th>
                 <th data-testid="header-unit-type">Unit Type</th>
                 <th data-testid="header-building-req">Building Requirement</th>

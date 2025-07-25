@@ -10,6 +10,7 @@ function initTable(unitData){
             {data: 'unit_name', title: 'Unit Name'},
             {data: 'rank', title: 'Rank'},
             {data: 'sp', title: 'SP'},
+            {data: 'sp_reward', title: 'SP on Kill'},
             {data: 'promotion_reward', title: 'Promotion Reward'},
             {
                 data: null,
@@ -27,7 +28,8 @@ function initTable(unitData){
                     return `<label><input type="checkbox" class="ranked-checkbox" data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span></span></label>`;
                 }
             },
-            {data: 'unlock_level', title: 'Unlock Level'},
+            {data: 'unlock_level', title: 'Unit Unlock Level'},
+            {data: 'pre_req_rank', title: 'Pre-Rank requirement'},
             {data: 'category', title: 'Category'},
             {data: 'unit_type', title: 'Unit Type'},
             {data: 'building_requirement', title: 'Building Requirement'},

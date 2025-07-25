@@ -1,5 +1,6 @@
 let unitData = [];
 let unlockSlider;
+let rankSlider;
 let seenUnitNames = new Set();
 
 const excludeOthers = [
@@ -24,13 +25,30 @@ document.addEventListener('DOMContentLoaded', function () {
     // Unlock level range filtering
     unlockSlider = document.getElementById('unlock-level-slider');
     noUiSlider.create(unlockSlider, {
-        start: [1, 46],
+        start: [0, 46],
         connect: true,
         step: 1,
         tooltips: true,
         stateSave: true,
         range: {
-            min: 1,
+            min: 0,
+            max: 70
+        },
+        format: {
+            to: value => Math.round(value),
+            from: value => Number(value)
+        }
+    });
+
+    rankSlider = document.getElementById('unlock-rank-slider');
+    noUiSlider.create(rankSlider, {
+        start: [0, 46],
+        connect: true,
+        step: 1,
+        tooltips: true,
+        stateSave: true,
+        range: {
+            min: 0,
             max: 70
         },
         format: {
@@ -55,6 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 unlockDisplay.textContent = `Level: ${values[0]} - ${values[1]}`;
                 table.draw();
             });
+            const rankDisplay = document.getElementById('unlock-rank-display');
+            rankSlider.noUiSlider.on('update', function (values) {
+                rankDisplay.textContent = `Unlock rank: ${values[0]} - ${values[1]}`;
+                table.draw();
+            })
             $('#unitTable').on('change', '.owned-checkbox, .ranked-checkbox', function () {
                 seenUnitNames = new Set();
                 table.draw();
@@ -74,12 +97,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (unlockSlider?.noUiSlider) {
                     [min, max] = unlockSlider.noUiSlider.get().map(Number);
                 }
+                let [rMin, rMax] = [1, 100];
+                if (rankSlider?.noUiSlider) {
+                    [rMin, rMax] = rankSlider.noUiSlider.get().map(Number);
+                }
                 let level = row.unlock_level;
+                let unlockRankLevel = row.pre_req_rank;
                 if (isNaN(level) || level === null || level === undefined) {
                     level = 1;
                 }
+                if (isNaN(unlockRankLevel) || unlockRankLevel === null || unlockRankLevel === undefined) {
+                    unlockRankLevel = 1;
+                }
                 if (level < min || level > max) return false;
-
+                if (unlockRankLevel < rMin || unlockRankLevel > rMax) return false;
                 // Rank
                 const selectedRanks = $('#rank-filter').val();
                 if (selectedRanks?.length && !selectedRanks.includes(row.rank)) return false;
@@ -121,7 +152,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 document.getElementById('currentVersionBtn').addEventListener('click', () => {
     // 1. Set unlock level slider max to 46, min remains 1
-    unlockSlider.noUiSlider.set([1, 46]);
+    unlockSlider.noUiSlider.set([0, 46]);
+    rankSlider.noUiSlider.set([0, 46]);
 
     // 2. Select "other_requirements" all options except excluded ones
     const otherFilter = document.getElementById('other_filter');
@@ -240,7 +272,10 @@ function clearFilters(noReload = false) {
 
     // Reset range
     if (unlockSlider?.noUiSlider) {
-        unlockSlider.noUiSlider.set([1, 70]);
+        unlockSlider.noUiSlider.set([0, 70]);
+    }
+    if (rankSlider?.noUiSlider) {
+        rankSlider.noUiSlider.set([0, 100]);
     }
     // Uncheck owned/ranked filters
     $('#filter-owned').prop('checked', false);
@@ -280,7 +315,8 @@ function getCurrentFilters() {
         rank_filter: $('#rank-filter').val(),
         filter_owned: $('#filter-owned').prop('checked'),
         filter_ranked: $('#filter-ranked').prop('checked'),
-        unlock_level_range: unlockSlider.noUiSlider.get().map(Number)
+        unlock_level_range: unlockSlider.noUiSlider.get().map(Number),
+        rank_slider: rankSlider.noUiSlider.get().map(Number)
     };
 }
 
@@ -295,6 +331,10 @@ function setFilters(filters) {
     $('#filter-ranked').prop('checked', filters.filter_ranked);
     if (filters.unlock_level_range && filters.unlock_level_range.length === 2) {
         unlockSlider.noUiSlider.set(filters.unlock_level_range);
+    }
+    if (filters.rank_slider && filters.rank_slider.length === 2) {
+        rankSlider.noUiSlider.set(filters.rank_slider);
+        rankSlider.noUiSlider.set(filters.rank_slider);
     }
 }
 
