@@ -1,0 +1,94 @@
+{
+  "tracking": {
+    "Trooper::2": {
+      "owned": true,
+      "ranked": true
+    },
+    "Trooper::3": {
+      "owned": true
+    },
+    "Trooper::4": {
+      "owned": true
+    },
+    "Trooper::5": {
+      "owned": true
+    },
+    "Trooper::6": {
+      "owned": true
+    },
+    "Anti-Aircraft Turret::2": {
+      "owned": true
+    },
+    "Anti-Aircraft Turret::3": {
+      "owned": true
+    },
+    "Anti-Aircraft Turret::4": {
+      "owned": true
+    },
+    "Anti-Aircraft Turret::5": {
+      "owned": true
+    },
+    "Anti-Aircraft Turret::6": {
+      "owned": true
+    },
+    "Anti-Aircraft Turret::7": {
+      "owned": true
+    },
+    "Anti-Aircraft Turret::8": {
+      "owned": true
+    },
+    "Anti-Aircraft Turret::9": {
+      "owned": true
+    },
+    "Sandbag Pile::2": {
+      "owned": true
+    },
+    "Sandbag Pile::3": {
+      "owned": true
+    },
+    "Sandbag Pile::4": {
+      "owned": true
+    },
+    "Sandbag Pile::5": {
+      "owned": true
+    },
+    "Sandbag Pile::6": {
+      "owned": true
+    }
+  },
+  "filters": {
+    "building_filter": [],
+    "other_filter": [
+      "",
+      "How to Kill People From Quite a Long Way Away",
+      "Weapons Factory",
+      "Rocket Factory",
+      "SpecOps Center",
+      "Chemical Weapons Lab",
+      "Gun Foundry",
+      "Raptor Ranch",
+      "Boar Pen",
+      "Mammoth Pen",
+      "Sandworm Ranch",
+      "Armor ShopGun Foundry",
+      "Armor Shop",
+      "Armor ShopChemical Weapons Lab",
+      "Reef Bandit Armory"
+    ],
+    "category_filter": [],
+    "nanopods_filter": "false",
+    "rank_filter": [
+      "2"
+    ],
+    "filter_owned": true,
+    "filter_ranked": false,
+    "unlock_level_range": [
+      0,
+      46
+    ],
+    "rank_slider": [
+      0,
+      46
+    ]
+  }
+}
