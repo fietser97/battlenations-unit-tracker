@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             $('#filter-owned, #filter-ranked').on('change', () => table.draw());
+            drawTable();
         });
 
 });
