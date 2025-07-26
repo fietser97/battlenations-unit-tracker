@@ -7,7 +7,7 @@
     "serve": "http-server ./src -c-1",
     "unit:test": "vitest run --reporter=dot",
     "test": "start-server-and-test serve 8080 test:e2e",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test --reporter=html",
     "install:playwright": "npx playwright install"
   },
   "repository": {
