@@ -1,4 +1,4 @@
-function updateTracking(unitName, field, value, rank = null) {
+window.updateTracking = function updateTracking(unitName, field, value, rank = null) {
     const data = getStoredTrackingData();
 
     if (field === 'ranked' && rank !== null) {
@@ -8,7 +8,8 @@ function updateTracking(unitName, field, value, rank = null) {
         data[key][field] = value;
 
         localStorage.setItem('unitTracking', JSON.stringify(data));
-        $(`.${field}-checkbox[data-unit="${unitName}"][data-rank="${rank}"]`).prop('checked', value);
+        document.querySelectorAll(`.${field}-checkbox[data-unit="${unitName}"][data-rank="${rank}"]`)
+            .forEach(el => el.checked = value);
 
     } else if (field === 'owned') {
         // Update all ranks of this unit
@@ -21,6 +22,7 @@ function updateTracking(unitName, field, value, rank = null) {
         });
 
         localStorage.setItem('unitTracking', JSON.stringify(data));
-        $(`.${field}-checkbox[data-unit="${unitName}"]`).prop('checked', value);
+        document.querySelectorAll(`.${field}-checkbox[data-unit="${unitName}"]`)
+            .forEach(el => el.checked = value);
     }
 }
