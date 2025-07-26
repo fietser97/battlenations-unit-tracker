@@ -70,6 +70,7 @@ async function run() {
     });
 
     copyStatic("css/styles.css");
+    copyStatic("robots.txt");
 }
 
 run();

@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Battle Nations Units</title>
+    <title>Battle Nations Unit Tracker</title>
+    <meta name="description" content="Track your Battle Nations units by rank, ownership, and more.">
+
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Battle Nations Unit Tracker">
+    <meta property="og:description" content="Track your Battle Nations units by rank, ownership, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/your-repo">
+    <meta property="og:image" content="https://yourusername.github.io/your-repo/thumbnail.png"> <!-- optional -->
+
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css"/>
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -55,7 +64,7 @@
                 <p id="unlock-rank-display" class="range-label" data-testid="unlock-rank-display">Unlock rank: 1 - 70</p>
             </div>
             <div class="input-field col s6 m2" data-testid="rank-filter-wrapper">
-                <select id="rank-filter" multiple data-testid="rank-filter">
+                <label for="rank-filter"></label><select id="rank-filter" multiple data-testid="rank-filter">
                     <option value="" disabled>Select Rank(s)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -70,7 +79,7 @@
             </div>
             <div class="col s8 m3" data-testid="nanopods-filter-wrapper">
                 <div class="input-field">
-                    <select id="nanopods_filter" data-testid="nanopods-filter">
+                    <label for="nanopods_filter"></label><select id="nanopods_filter" data-testid="nanopods-filter">
                         <option value="all" selected>All</option>
                         <option value="true">Yes</option>
                         <option value="false">No</option>
@@ -100,21 +109,21 @@
         <div class="row filter-section" data-testid="filters-row-2">
             <div class="col s8 m3" data-testid="building-filter-wrapper">
                 <div class="input-field">
-                    <select multiple id="building_filter" data-testid="building-filter"></select>
+                    <label for="building_filter"></label><select multiple id="building_filter" data-testid="building-filter"></select>
                     <label>Building Requirement</label>
                 </div>
             </div>
 
             <div class="col s8 m3" data-testid="other-filter-wrapper">
                 <div class="input-field">
-                    <select multiple id="other_filter" data-testid="other-filter"></select>
+                    <label for="other_filter"></label><select multiple id="other_filter" data-testid="other-filter"></select>
                     <label>Other Requirements</label>
                 </div>
             </div>
 
             <div class="col s8 m3" data-testid="category-filter-wrapper">
                 <div class="input-field">
-                    <select multiple id="category_filter" data-testid="category-filter"></select>
+                    <label for="category_filter"></label><select multiple id="category_filter" data-testid="category-filter"></select>
                     <label>Category</label>
                 </div>
             </div>
