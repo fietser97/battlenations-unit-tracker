@@ -12,6 +12,8 @@ jobs:
   test:
     name: Run unit & Playwright tests
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.54.1-jammy  # or latest
 
     steps:
       - name: Checkout source
@@ -26,9 +28,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
 
       - name: Run Vitest
         run: npm run unit:test

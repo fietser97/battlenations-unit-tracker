@@ -5,7 +5,7 @@
   "main": "src/index.html",
   "scripts": {
     "serve": "http-server ./src -c-1",
-    "unit:test": "itest run --reporter=dot",
+    "unit:test": "vitest run --reporter=dot",
     "test": "start-server-and-test serve 8080 test:e2e",
     "test:e2e": "playwright test",
     "install:playwright": "npx playwright install"
