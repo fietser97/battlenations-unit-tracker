@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 
-test('test', async ({page}) => {
+test('import export test', async ({page}) => {
 
     await page.goto('http://localhost:8080/');
     const [fileChooser] = await Promise.all([
@@ -11,7 +11,7 @@ test('test', async ({page}) => {
     await expect(page.getByTestId('unlock-rank-display')).toContainText('Unlock rank: 0 - 46');
     await expect(page.getByTestId('unlock-range-display')).toContainText('Level: 0 - 46');
     await expect(page.getByTestId('ranked-count')).toContainText('1');
-    await expect(page.getByTestId('torank-count')).toContainText('16');
+    await expect(page.getByTestId('torank-count')).toContainText('17');
     await expect(page.getByTestId('owned-count')).toContainText('3');
     await expect(page.getByTestId('other-filter-wrapper').getByRole('textbox')).toHaveValue('(none), How to Kill People From Quite a Long Way Away, Weapons Factory, Rocket Factory, SpecOps Center, Chemical Weapons Lab, Gun Foundry, Raptor Ranch, Boar Pen, Mammoth Pen, Sandworm Ranch, Armor ShopGun Foundry, Armor Shop, Armor ShopChemical Weapons Lab, Reef Bandit Armory');
     await expect(page.getByTestId('rank-filter-wrapper').getByRole('textbox')).toHaveValue('2');

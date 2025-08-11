@@ -5,7 +5,7 @@ function countRankedUnits() {
 
 function countTotalRanksTodo() {
     const tracking = getStoredTrackingData();
-    return Object.values(tracking).filter(u => u.owned).length - countRankedUnits();
+    return Object.values(tracking).filter(u => u.owned && !u.ranked).length;
 }
 
 function countOwnedUnits() {

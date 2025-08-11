@@ -83,8 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 table.draw();
             });
 
-            $.fn.dataTable.ext.search = []; // clear previous filters
-
             $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
                 if (dataIndex === 0) {
                     seenUnitNames = new Set();
@@ -253,7 +251,7 @@ function isUnique(unitName) {
 }
 
 function drawTable() {
-    document.getElementById('torank-count').textContent = `${countTotalRanksTodo() - countRankedUnits()}`;
+    document.getElementById('torank-count').textContent = `${countTotalRanksTodo()}`;
     document.getElementById('owned-count').textContent = `${countOwnedUnits()}`;
     document.getElementById('ranked-count').textContent = `${countRankedUnits()}`;
     table.draw();

@@ -65,7 +65,7 @@ function initTable(unitData){
                 const unit = $(this).data('unit');
                 updateTracking(unit, 'owned', this.checked);
                 highlight($(this).closest('tr'));
-                document.getElementById('torank-count').textContent = `${countTotalRanksTodo() - countRankedUnits()}`;
+                document.getElementById('torank-count').textContent = `${countTotalRanksTodo()}`;
                 document.getElementById('owned-count').textContent = `${countOwnedUnits()}`;
             });
             $('#unitTable .ranked-checkbox').off().on('change', function () {
