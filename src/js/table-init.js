@@ -74,6 +74,7 @@ function initTable(unitData){
                 highlight($(this).closest('tr'));
                 updateTracking(unit, 'ranked', this.checked, rank); // Specific rank only
                 document.getElementById('ranked-count').textContent = `${countRankedUnits()}`;
+                document.getElementById('torank-count').textContent = `${countTotalRanksTodo()}`;
             });
         }
     });
