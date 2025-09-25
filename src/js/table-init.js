@@ -1,12 +1,19 @@
 let table;
 
-function initTable(unitData){
+function initTable(unitData) {
     table = $('#unitTable').DataTable({
         data: unitData,
         pageLength: 100,
         responsive: true,
-        order: [[2, 'asc']],
+        order: [[3, 'asc']],
         columns: [
+            {
+                data: 'unit_name',
+                title: "Icon",
+                render(data) {
+                return `<img src="data/icons/${data}.png" alt="${data}" style="width:40px;height:40px;">`
+                }
+            },
             {data: 'unit_name', title: 'Unit Name'},
             {data: 'rank', title: 'Rank'},
             {data: 'sp', title: 'SP'},
