@@ -54,6 +54,15 @@ function copyStatic(file) {
     console.log(`Copied: ${file}`);
 }
 
+// Copy icons
+function copyImages(srcFolder, destFolder) {
+    const inputPath = path.join(SRC, srcFolder);
+    const outputPath = path.join(DEST, destFolder);
+
+    fs.copySync(inputPath, outputPath);
+    console.log(`Copied images from ${inputPath} to ${outputPath}`);
+}
+
 // Customize your file list
 async function run() {
     await minifyJS("js/main.js");
@@ -71,6 +80,7 @@ async function run() {
 
     copyStatic("css/styles.css");
     copyStatic("robots.txt");
+    copyImages("data/icons/","data/icons/")
 }
 
 run();
