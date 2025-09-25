@@ -1,12 +1,19 @@
 let table;
 
-function initTable(unitData){
+function initTable(unitData) {
     table = $('#unitTable').DataTable({
         data: unitData,
         pageLength: 100,
         responsive: true,
-        order: [[2, 'asc']],
+        order: [[3, 'asc']],
         columns: [
+            {
+                data: 'unit_name',
+                title: "Icon",
+                render(data) {
+                return `<img src="data/icons/${data}.png" alt="${data}" data-testid="icon-${data}" style="width:40px;height:40px;">`
+                }
+            },
             {data: 'unit_name', title: 'Unit Name'},
             {data: 'rank', title: 'Rank'},
             {data: 'sp', title: 'SP'},
@@ -17,7 +24,7 @@ function initTable(unitData){
                 title: 'Owned',
                 render: function (data, type, row) {
                     const checked = getStoredValue(row.unit_name, 'owned', row.rank) ? 'checked' : '';
-                    return `<label><input type="checkbox" class="owned-checkbox" data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span></span></label>`;
+                    return `<label><input type="checkbox" class="owned-checkbox" data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span data-testid="checkbox-owned-${row.unit_name}-${row.rank}"></span></label>`;
                 }
             },
             {
@@ -25,7 +32,7 @@ function initTable(unitData){
                 title: 'Ranked',
                 render: function (data, type, row) {
                     const checked = getStoredValue(row.unit_name, 'ranked', row.rank) ? 'checked' : '';
-                    return `<label><input type="checkbox" class="ranked-checkbox" data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span></span></label>`;
+                    return `<label><input type="checkbox" class="ranked-checkbox"  data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span data-testid="checkbox-ranked-${row.unit_name}-${row.rank}"></span></label>`;
                 }
             },
             {data: 'unlock_level', title: 'Unit Unlock Level'},

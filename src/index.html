@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="text-accent-1 center-align" style="margin-bottom: 10px;" data-testid="description">
-        After playing Battle Nations in it's first form I have been waiting for something like this.
+        After playing Battle Nations in its first form I have been waiting for something like this.
         Now I have the knowledge to make it myself. <br>
         The tracker tracks the units u own and have ranked.<br>
         The import/export buttons are only for this tracker from the game, unfortunately.<br>
@@ -62,29 +62,30 @@
             </div>
             <div class="input-field col s6 m2" data-testid="unlock-rank-filter">
                 <div id="unlock-rank-slider" class="my-3" data-testid="unlock-rank-slider"></div>
-                <p id="unlock-rank-display" class="range-label" data-testid="unlock-rank-display">Unlock rank: 1 - 70</p>
+                <p id="unlock-rank-display" class="range-label" data-testid="unlock-rank-display">Unlock rank: 1 -
+                    70</p>
             </div>
             <div class="input-field col s6 m2" data-testid="rank-filter-wrapper">
                 <label for="rank-filter"></label><select id="rank-filter" multiple data-testid="rank-filter">
-                    <option value="" disabled>Select Rank(s)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                </select>
+                <option value="" disabled>Select Rank(s)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
                 <label>Filter by Rank</label>
             </div>
             <div class="col s8 m3" data-testid="nanopods-filter-wrapper">
                 <div class="input-field">
                     <label for="nanopods_filter"></label><select id="nanopods_filter" data-testid="nanopods-filter">
-                        <option value="all" selected>All</option>
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
+                    <option value="all" selected>All</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
                     <label>Requires Nanopods</label>
                 </div>
             </div>
@@ -110,21 +111,24 @@
         <div class="row filter-section" data-testid="filters-row-2">
             <div class="col s8 m3" data-testid="building-filter-wrapper">
                 <div class="input-field">
-                    <label for="building_filter"></label><select multiple id="building_filter" data-testid="building-filter"></select>
+                    <label for="building_filter"></label><select multiple id="building_filter"
+                                                                 data-testid="building-filter"></select>
                     <label>Building Requirement</label>
                 </div>
             </div>
 
             <div class="col s8 m3" data-testid="other-filter-wrapper">
                 <div class="input-field">
-                    <label for="other_filter"></label><select multiple id="other_filter" data-testid="other-filter"></select>
+                    <label for="other_filter"></label><select multiple id="other_filter"
+                                                              data-testid="other-filter"></select>
                     <label>Other Requirements</label>
                 </div>
             </div>
 
             <div class="col s8 m3" data-testid="category-filter-wrapper">
                 <div class="input-field">
-                    <label for="category_filter"></label><select multiple id="category_filter" data-testid="category-filter"></select>
+                    <label for="category_filter"></label><select multiple id="category_filter"
+                                                                 data-testid="category-filter"></select>
                     <label>Category</label>
                 </div>
             </div>
@@ -195,6 +199,7 @@
         <table id="unitTable" class="highlight striped responsive-table" data-testid="unit-table">
             <thead>
             <tr data-testid="unit-table-header-row">
+                <th data-testid="icon">Icon</th>
                 <th data-testid="header-unit-name">Unit Name</th>
                 <th data-testid="header-rank">Rank</th>
                 <th data-testid="header-sp">SP</th>

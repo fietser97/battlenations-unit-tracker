@@ -11,15 +11,15 @@ test('testing rank counters', async ({ page }) => {
 
 test('test rank todo', async ({ page }) => {
     await page.goto('http://localhost:8080/');
-    await page.getByRole('row', { name: '► Zombie Hunter 2 100 84 800' }).locator('span').first().click();
-    await page.getByRole('row', { name: '► Trooper 2 120 20 300 1' }).locator('span').first().click();
+    await page.getByTestId('checkbox-owned-Zombie Hunter-2').click();
+    await page.getByTestId('checkbox-owned-Trooper-2').click();
     await page.getByText('Owned only').click();
     await page.getByText('Hide ranked').click();
     await expect(page.getByTestId('torank-count')).toContainText('12');
     await expect(page.getByTestId('owned-count')).toContainText('2');
     await expect(page.getByTestId('ranked-count')).toContainText('0');
-    await page.getByRole('row', { name: '► Zombie Hunter 2 100 84 800' }).locator('span').nth(1).click();
-    await page.getByRole('row', { name: '► Zombie Hunter 3 200 108' }).locator('span').nth(1).click();
+    await page.getByTestId('checkbox-ranked-Zombie Hunter-2').click();
+    await page.getByTestId('checkbox-ranked-Zombie Hunter-3').click();
     await expect(page.getByTestId('ranked-count')).toContainText('2');
     await expect(page.getByTestId('torank-count')).toContainText('10');
     await expect(page.getByTestId('owned-count')).toContainText('2');
