@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 
-test('import export test', async ({page}) => {
+test('import test', async ({page}) => {
 
     await page.goto('http://localhost:8080/');
     const [fileChooser] = await Promise.all([
@@ -21,4 +21,22 @@ test('import export test', async ({page}) => {
     await expect(page.locator('#unitTable_paginate')).toContainText('1');
     await expect(page.getByTestId('checkbox-filter-owned')).toBeChecked();
     await expect(page.getByTestId('username')).toHaveValue("Fietser97");
+});
+
+test('download no username', async ({ page }) => {
+    await page.goto('http://localhost:8080/');
+    const downloadPromise = page.waitForEvent('download');
+    await page.getByTestId('export-button').click();
+    const download = await downloadPromise;
+    expect(download.suggestedFilename()).toContain("unitTracking_unknown")
+});
+
+
+test('download username test', async ({ page }) => {
+    await page.goto('http://localhost:8080/');
+    await page.getByTestId('username').fill("test");
+    const downloadPromise = page.waitForEvent('download');
+    await page.getByTestId('export-button').click();
+    const download = await downloadPromise;
+    expect(download.suggestedFilename()).toContain("unitTracking_test");
 });

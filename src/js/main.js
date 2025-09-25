@@ -352,3 +352,12 @@ function highlight(row) {
     row.addClass('highlight-change');
     setTimeout(() => row.removeClass('highlight-change'), 500);
 }
+
+function getUserName() {
+    let username = $('#username').val();
+    if (username) {
+        return username;
+    } else {
+        return 'unknown';
+    }
+}

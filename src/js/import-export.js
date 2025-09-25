@@ -7,7 +7,7 @@ function exportData() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `unitTracking_${new Date().toISOString().replace(/[:T]/g, '-').split('.')[0]}.json`;
+    a.download = `unitTracking_${getUserName()}_${new Date().toISOString().replace(/[:T]/g, '-').split('.')[0]}.json`;
     a.click();
 }
 
@@ -21,6 +21,7 @@ function importData(file) {
             if (imported.filters) setFilters(imported.filters);
             drawTable();
         } catch (e) {
+            console.error(e);
             alert('Invalid file format.');
         }
     };
