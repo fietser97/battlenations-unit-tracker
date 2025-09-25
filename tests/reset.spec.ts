@@ -1,6 +1,6 @@
-import { test, expect } from '@playwright/test';
+import {expect, test} from '@playwright/test';
 
-test('test', async ({ page }) => {
+test('test', async ({page}) => {
     await page.goto('http://localhost:8080/');
     await page.getByTestId('current-version-btn').click();
     await expect(page.getByTestId('other-filter-wrapper').getByRole('textbox')).toHaveValue('(none), How to Kill People From Quite a Long Way Away, Weapons Factory, Rocket Factory, SpecOps Center, Chemical Weapons Lab, Gun Foundry, Raptor Ranch, Boar Pen, Mammoth Pen, Sandworm Ranch, Armor ShopGun Foundry, Armor Shop, Armor ShopChemical Weapons Lab, Reef Bandit Armory');
@@ -17,6 +17,7 @@ test('test', async ({ page }) => {
     await page.getByTestId('rank-filter-wrapper').getByRole('textbox').click();
     await page.locator('span').filter({hasText: '4'}).first().click();
     await page.getByRole('list').getByText('5').click();
+    await page.getByTestId("username").fill("test");
     await expect(page.getByTestId('rank-filter-wrapper').getByRole('textbox')).toHaveValue('4, 5');
     await expect(page.getByTestId('nanopods-filter-wrapper').getByRole('textbox')).toHaveValue('All');
     await expect(page.getByTestId('other-filter-wrapper').getByRole('textbox')).toHaveValue('(none), How to Kill People From Quite a Long Way Away, Weapons Factory, Rocket Factory, SpecOps Center, Chemical Weapons Lab, Gun Foundry, Raptor Ranch, Boar Pen, Mammoth Pen, Sandworm Ranch, Armor ShopGun Foundry, Armor Shop, Armor ShopChemical Weapons Lab, Reef Bandit Armory');
@@ -39,4 +40,5 @@ test('test', async ({ page }) => {
     await expect(page.getByTestId('checkbox-filter-owned')).not.toBeChecked();
     await expect(page.getByTestId('checkbox-filter-ranked')).not.toBeChecked();
     await expect(page.getByTestId('checkbox-filter-unique')).not.toBeChecked();
+    await expect(page.getByTestId('username')).toHaveValue("");
 });
