@@ -16,6 +16,7 @@ body.dark-mode {
 
 body.dark-mode table,
 body.dark-mode .card-panel,
+body.dark-mode .input-field,
 body.dark-mode .input-field input,
 body.dark-mode .input-field select,
 body.dark-mode .dataTables_wrapper,

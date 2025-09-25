@@ -237,6 +237,7 @@ document.getElementById('clear-all').addEventListener('click', () => {
 
     // Uncheck all checkboxes visually
     $('.owned-checkbox, .ranked-checkbox').prop('checked', false);
+    $('#username').val("")
 
     drawTable();
 });
@@ -315,7 +316,8 @@ function getCurrentFilters() {
         filter_owned: $('#filter-owned').prop('checked'),
         filter_ranked: $('#filter-ranked').prop('checked'),
         unlock_level_range: unlockSlider.noUiSlider.get().map(Number),
-        rank_slider: rankSlider.noUiSlider.get().map(Number)
+        rank_slider: rankSlider.noUiSlider.get().map(Number),
+        username: $('#username').prop('value'),
     };
 }
 
@@ -328,6 +330,7 @@ function setFilters(filters) {
     $('#rank-filter').val(filters.rank_filter).formSelect();
     $('#filter-owned').prop('checked', filters.filter_owned);
     $('#filter-ranked').prop('checked', filters.filter_ranked);
+    $('#username').val(filters.username);
     if (filters.unlock_level_range && filters.unlock_level_range.length === 2) {
         unlockSlider.noUiSlider.set(filters.unlock_level_range);
     }

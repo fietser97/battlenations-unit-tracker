@@ -20,4 +20,5 @@ test('import export test', async ({page}) => {
     await expect(page.getByTestId('building-filter-wrapper').getByRole('textbox')).toBeEmpty();
     await expect(page.locator('#unitTable_paginate')).toContainText('1');
     await expect(page.getByTestId('checkbox-filter-owned')).toBeChecked();
+    await expect(page.getByTestId('username')).toHaveValue("Fietser97");
 });
