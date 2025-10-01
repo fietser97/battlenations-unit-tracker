@@ -2,6 +2,22 @@ body {
     padding: 20px;
 }
 
+#banner-header {
+    display: flex;
+    background-image: url("../data/banner2_1920x200.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    margin: 0;
+    color: white;
+    font-size: clamp(40px, 2vw + 2rem, 80px);
+    font-family: "Arial Black", serif;
+    align-items: center;
+    min-height: 150px;
+    max-height: 200px;
+    -webkit-text-stroke: 3px black;
+}
+
 .filter-section {
     margin-bottom: 20px;
 }
@@ -9,6 +25,7 @@ body {
 .dataTables_wrapper .dataTables_length select {
     display: inline;
 }
+
 body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
@@ -40,6 +57,7 @@ body.dark-mode .dropdown-content .select-dropdown {
     gap: 1rem;
     flex-wrap: wrap;
 }
+
 table.dataTable thead {
     background-color: #263238;
     color: white;
@@ -56,12 +74,14 @@ table.dataTable tbody tr:hover {
 body.dark-mode table.dataTable tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
+
 /* Light */
 table.dataTable td, table.dataTable th {
     border-bottom: 1px solid #ccc;
     padding: 12px 10px;
     vertical-align: middle;
 }
+
 /* Hide the original select inside the wrapper */
 .select-wrapper select {
     display: none !important;
@@ -70,6 +90,7 @@ table.dataTable td, table.dataTable th {
 table#unitTable tbody tr {
     border-bottom: 1px solid #ddd;
 }
+
 /* Row hover and selected for light mode */
 table.highlight > tbody > tr:hover {
     background-color: #bbbbbb;
@@ -84,8 +105,9 @@ table.highlight > tbody > tr:hover {
 .dark-mode table.highlight > tbody > tr.selected {
     background-color: rgba(33, 150, 243, 0.2); /* Material Blue with transparency */
 }
+
 /* Light mode highlight animation */
 .highlight-change {
-    background-color: #afb42b33  !important; /* Material Yellow 300 */
+    background-color: #afb42b33 !important; /* Material Yellow 300 */
     transition: background-color 0.5s ease;
 }
