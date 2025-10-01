@@ -80,6 +80,7 @@ async function run() {
 
     copyStatic("css/styles.css");
     copyStatic("robots.txt");
+    copyStatic("data/banner2_1920x200.png")
     copyImages("data/icons/","data/icons/")
 }
 

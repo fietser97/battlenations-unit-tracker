@@ -3,11 +3,10 @@ let unlockSlider;
 let rankSlider;
 let seenUnitNames = new Set();
 
-const excludeOthers = [
+const excludeOthers = new Set([
     "The Ridgy-Didge",
     "Promotional",
     "SpecOps CenterPromotional",
-    "Infection Test Facility",
     "Mercenary Vault",
     "Missile Silo",
     "The Way to a Bigfoot's Heart...",
@@ -19,7 +18,7 @@ const excludeOthers = [
     "The Frontier Jubilee Charity Drive",
     "Boss Strike",
     "Arena Challenge 1"
-];
+]);
 
 document.addEventListener('DOMContentLoaded', function () {
     // Unlock level range filtering
@@ -164,7 +163,7 @@ document.getElementById('currentVersionBtn').addEventListener('click', () => {
 
     // Select options NOT in excludeOthers
     for (const option of otherFilter.options) {
-        if (!excludeOthers.includes(option.value)) {
+        if (!excludeOthers.has(option.value)) {
             option.selected = true;
         }
     }
