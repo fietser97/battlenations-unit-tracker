@@ -75,7 +75,7 @@ async function run() {
 
     // Replace reference in HTML
     updateHtmlScriptReference("index.html", {
-        'tmpvalue':'feddevanderlist.battlenations-unit-tracker'
+        'tmpvalue':'fietser97.battlenations-unit-tracker'
     });
 
     copyStatic("css/styles.css");
