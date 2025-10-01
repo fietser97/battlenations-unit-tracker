@@ -11,7 +11,8 @@
     <meta property="og:description" content="Track your Battle Nations units by rank, ownership, and more.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://github.com/fietser97/battlenations-unit-tracker">
-    <meta property="og:image" content="https://github.com/fietser97/battlenations-unit-tracker/thumbnail.png"> <!-- optional -->
+    <meta property="og:image" content="https://github.com/fietser97/battlenations-unit-tracker/thumbnail.png">
+    <!-- optional -->
 
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css"/>
     <!-- Materialize CSS -->
@@ -27,15 +28,22 @@
 
 <div class="container-fluid" data-testid="container">
 
-    <h4 class="center-align" data-testid="page-title" id="banner-header" >Battle Nations Unit Tracker</h4>
-    <div class="right-align" data-testid="theme-toggle-wrapper">
-        <div class="switch col s12">
-            <label>
-                Light
-                <input id="themeToggle" type="checkbox" data-testid="theme-toggle"/>
-                <span class="lever"></span>
-                Dark
-            </label>
+    <h4 class="center-align" data-testid="page-title" id="banner-header">Battle Nations Unit Tracker</h4>
+    <div class="row valign-wrapper" data-testid="theme-toggle-wrapper" style="margin-bottom: 0">
+        <div class="col s6 left-align">
+            <a href="https://github.com/fietser97/battlenations-unit-tracker/releases/">
+                Release notes
+            </a>
+        </div>
+        <div class="col s6 right-align">
+            <div class="switch">
+                <label>
+                    Light
+                    <input id="themeToggle" type="checkbox" data-testid="theme-toggle"/>
+                    <span class="lever"></span>
+                    Dark
+                </label>
+            </div>
         </div>
     </div>
     <div class="text-accent-1 center-align" style="margin-bottom: 10px;" data-testid="description">
@@ -47,6 +55,8 @@
             href="https://github.com/fietser97/battlenations-unit-tracker/issues"
             data-testid="github-issues-link">
         https://github.com/fietser97/battlenations-unit-tracker/issues</a>
+        <br>
+
     </div>
     <div class="row" data-testid="main-row">
         <div class="col s12 right-align" data-testid="import-export-buttons">
@@ -160,7 +170,8 @@
             </div>
             <div class="col s2">
                 <label for="username">Username</label>
-                <input class="input-field" type="text" id="username" name="username" placeholder="Username" data-testid="username"/>
+                <input class="input-field" type="text" id="username" name="username" placeholder="Username"
+                       data-testid="username"/>
             </div>
             <div class="row" data-testid="counts-row">
                 <div class="col s2" data-testid="ranked-done-count-wrapper">
