@@ -3,7 +3,7 @@ import {expect, test} from '@playwright/test';
 test('test', async ({page}) => {
     await page.goto('http://localhost:8080/');
     await page.getByTestId('current-version-btn').click();
-    await expect(page.getByTestId('other-filter-wrapper').getByRole('textbox')).toHaveValue('(none), How to Kill People From Quite a Long Way Away, Weapons Factory, Rocket Factory, SpecOps Center, Chemical Weapons Lab, Gun Foundry, Raptor Ranch, Boar Pen, Mammoth Pen, Sandworm Ranch, Armor ShopGun Foundry, Armor Shop, Armor ShopChemical Weapons Lab, Reef Bandit Armory');
+    await expect(page.getByTestId('other-filter-wrapper').getByRole('textbox')).toHaveValue('(none), How to Kill People From Quite a Long Way Away, Weapons Factory, Rocket Factory, SpecOps Center, Chemical Weapons Lab, Gun Foundry, Raptor Ranch, Boar Pen, Mammoth Pen, Sandworm Ranch, Infection Test Facility, Armor ShopGun Foundry, Armor Shop, Armor ShopChemical Weapons Lab, Reef Bandit Armory');
     await page.getByText('Hide ranked').click();
     await page.getByText('Show Unique Units Only').click();
     await page.getByText('Owned only').click();
@@ -20,7 +20,7 @@ test('test', async ({page}) => {
     await page.getByTestId("username").fill("test");
     await expect(page.getByTestId('rank-filter-wrapper').getByRole('textbox')).toHaveValue('4, 5');
     await expect(page.getByTestId('nanopods-filter-wrapper').getByRole('textbox')).toHaveValue('All');
-    await expect(page.getByTestId('other-filter-wrapper').getByRole('textbox')).toHaveValue('(none), How to Kill People From Quite a Long Way Away, Weapons Factory, Rocket Factory, SpecOps Center, Chemical Weapons Lab, Gun Foundry, Raptor Ranch, Boar Pen, Mammoth Pen, Sandworm Ranch, Armor ShopGun Foundry, Armor Shop, Armor ShopChemical Weapons Lab, Reef Bandit Armory');
+    await expect(page.getByTestId('other-filter-wrapper').getByRole('textbox')).toHaveValue('(none), How to Kill People From Quite a Long Way Away, Weapons Factory, Rocket Factory, SpecOps Center, Chemical Weapons Lab, Gun Foundry, Raptor Ranch, Boar Pen, Mammoth Pen, Sandworm Ranch, Infection Test Facility, Armor ShopGun Foundry, Armor Shop, Armor ShopChemical Weapons Lab, Reef Bandit Armory');
     await expect(page.getByTestId('category-filter-wrapper').getByRole('textbox')).toHaveValue('infected, defense');
     await expect(page.getByTestId('building-filter-wrapper').getByRole('textbox')).toHaveValue('Barrackslevel 5, Barrackslevel 7');
     await expect(page.getByTestId('checkbox-filter-owned')).toBeChecked();
