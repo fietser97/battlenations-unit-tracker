@@ -14,7 +14,8 @@ test('test rank todo', async ({ page }) => {
     await page.getByTestId('checkbox-owned-Zombie Hunter-2').click();
     await page.getByTestId('checkbox-owned-Trooper-2').click();
     await page.getByText('Owned only').click();
-    await page.getByText('Hide ranked').click();
+    await page.locator('[data-testid="ranked-filter-wrapper"] .select-dropdown.dropdown-trigger').click();
+    await page.locator('[data-testid="ranked-filter-wrapper"] ul.select-dropdown li span', { hasText: 'No' }).click();
     await expect(page.getByTestId('torank-count')).toContainText('12');
     await expect(page.getByTestId('owned-count')).toContainText('2');
     await expect(page.getByTestId('ranked-count')).toContainText('0');

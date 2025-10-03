@@ -8,7 +8,7 @@ test('page load', async ({page}) => {
     await expect(page.getByText('Filter by Rank')).toBeVisible();
     await expect(page.locator('label').filter({hasText: 'Requires Nanopods'})).toBeVisible();
     await expect(page.getByText('Owned only')).toBeVisible();
-    await expect(page.getByText('Hide ranked')).toBeVisible();
+    await expect(page.getByText('Unit Ranked')).toBeVisible();
     await expect(page.getByText('Show Unique Units Only')).toBeVisible();
     await expect(page.locator('label').filter({hasText: 'Category'})).toBeVisible();
     await expect(page.locator('label').filter({hasText: 'Other Requirements'})).toBeVisible();
