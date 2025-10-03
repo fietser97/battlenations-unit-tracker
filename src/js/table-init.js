@@ -12,7 +12,8 @@ function initTable(unitData) {
                 title: "Icon",
                 render(data) {
                 return `<img src="data/icons/${data}.png" alt="${data}" data-testid="icon-${data}" style="width:40px;height:40px;">`
-                }
+                },
+                orderable: false,
             },
             {data: 'unit_name', title: 'Unit Name'},
             {data: 'rank', title: 'Rank'},
@@ -25,7 +26,8 @@ function initTable(unitData) {
                 render: function (data, type, row) {
                     const checked = getStoredValue(row.unit_name, 'owned', row.rank) ? 'checked' : '';
                     return `<label><input type="checkbox" class="owned-checkbox" data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span data-testid="checkbox-owned-${row.unit_name}-${row.rank}"></span></label>`;
-                }
+                },
+                orderable: false,
             },
             {
                 data: null,
@@ -33,7 +35,8 @@ function initTable(unitData) {
                 render: function (data, type, row) {
                     const checked = getStoredValue(row.unit_name, 'ranked', row.rank) ? 'checked' : '';
                     return `<label><input type="checkbox" class="ranked-checkbox"  data-unit="${row.unit_name}" data-rank="${row.rank}" ${checked}><span data-testid="checkbox-ranked-${row.unit_name}-${row.rank}"></span></label>`;
-                }
+                },
+                orderable: false,
             },
             {data: 'unlock_level', title: 'Unit Unlock Level'},
             {data: 'pre_req_rank', title: 'Pre-Rank requirement'},
