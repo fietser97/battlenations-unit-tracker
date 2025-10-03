@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Unlock level range filtering
     unlockSlider = document.getElementById('unlock-level-slider');
     noUiSlider.create(unlockSlider, {
-        start: [0, 46],
+        start: [0, 49],
         connect: true,
         step: 1,
         tooltips: true,
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     rankSlider = document.getElementById('unlock-rank-slider');
     noUiSlider.create(rankSlider, {
-        start: [0, 46],
+        start: [0, 49],
         connect: true,
         step: 1,
         tooltips: true,
@@ -150,8 +150,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 document.getElementById('currentVersionBtn').addEventListener('click', () => {
     // 1. Set unlock level slider max to 46, min remains 1
-    unlockSlider.noUiSlider.set([0, 46]);
-    rankSlider.noUiSlider.set([0, 46]);
+    unlockSlider.noUiSlider.set([0, 49]);
+    rankSlider.noUiSlider.set([0, 49]);
 
     // 2. Select "other_requirements" all options except excluded ones
     const otherFilter = document.getElementById('other_filter');
@@ -259,7 +259,7 @@ function drawTable() {
 
 function clearFilters(noReload = false) {
     const filters = ['building_filter', 'other_filter', 'category_filter', 'rank-filter', 'nanopods_filter'];
-    filters.forEach(id => {
+    for (const id of filters) {
         const el = document.getElementById(id);
         if (el) {
             if (el.multiple) el.value = null;
@@ -267,7 +267,7 @@ function clearFilters(noReload = false) {
             M.FormSelect.getInstance(el)?.destroy();
             M.FormSelect.init(el);
         }
-    });
+    }
 
     // Reset range
     if (unlockSlider?.noUiSlider) {
@@ -288,12 +288,12 @@ function clearFilters(noReload = false) {
 function populateFilters() {
     const addOptions = (id, values) => {
         const select = document.getElementById(id);
-        values.forEach(v => {
+        for (const v of values) {
             const opt = document.createElement("option");
             opt.value = v;
             opt.textContent = v || "(none)";
             select.appendChild(opt);
-        });
+        }
     };
 
     const uniqueVals = (field) =>
