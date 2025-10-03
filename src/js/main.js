@@ -259,7 +259,7 @@ function drawTable() {
 
 function clearFilters(noReload = false) {
     const filters = ['building_filter', 'other_filter', 'category_filter', 'rank-filter', 'nanopods_filter'];
-    filters.forEach(id => {
+    for (const id of filters) {
         const el = document.getElementById(id);
         if (el) {
             if (el.multiple) el.value = null;
@@ -267,7 +267,7 @@ function clearFilters(noReload = false) {
             M.FormSelect.getInstance(el)?.destroy();
             M.FormSelect.init(el);
         }
-    });
+    }
 
     // Reset range
     if (unlockSlider?.noUiSlider) {
@@ -288,16 +288,17 @@ function clearFilters(noReload = false) {
 function populateFilters() {
     const addOptions = (id, values) => {
         const select = document.getElementById(id);
-        values.forEach(v => {
+        for (const v of values) {
             const opt = document.createElement("option");
             opt.value = v;
             opt.textContent = v || "(none)";
             select.appendChild(opt);
-        });
+        }
     };
 
     const uniqueVals = (field) =>
-        [...new Set(unitData.map(d => d[field]).filter(v => v !== undefined))];
+        [...new Set(unitData.map(d => d[field]).filter(v => v !== undefined))]
+            .sort((a, b) => a.localeCompare(b));
 
     addOptions("building_filter", uniqueVals("building_requirement"));
     addOptions("other_filter", uniqueVals("other_requirements"));
