@@ -8,7 +8,9 @@ test('reset test', async ({page}) => {
         opts.map(o => o.textContent.trim())
     );
     expect(otherFilter.sort()).toEqual(expected.sort());
-    await page.getByText('Hide ranked').click();
+
+    await page.locator('[data-testid="ranked-filter-wrapper"] .select-dropdown.dropdown-trigger').click();
+    await page.locator('[data-testid="ranked-filter-wrapper"] ul.select-dropdown li span', { hasText: 'Yes' }).click();
     await page.getByText('Show Unique Units Only').click();
     await page.getByText('Owned only').click();
     await page.getByTestId('category-filter-wrapper').getByRole('textbox').click();
@@ -31,7 +33,7 @@ test('reset test', async ({page}) => {
     await expect(page.getByTestId('category-filter-wrapper').getByRole('textbox')).toHaveValue('defense, infected');
     await expect(page.getByTestId('building-filter-wrapper').getByRole('textbox')).toHaveValue('Barrackslevel 5, Barrackslevel 7');
     await expect(page.getByTestId('checkbox-filter-owned')).toBeChecked();
-    await expect(page.getByTestId('checkbox-filter-ranked')).toBeChecked();
+    await expect(page.getByTestId('ranked-filter-wrapper').getByRole('textbox')).toHaveValue('Yes');
     await expect(page.getByTestId('checkbox-filter-unique')).toBeChecked();
     await page.getByTestId('clear-all-btn').click();
     await expect(page.getByTestId('rank-filter-wrapper').getByRole('textbox')).toHaveValue('Select Rank(s)');
@@ -45,7 +47,7 @@ test('reset test', async ({page}) => {
     await expect(page.getByTestId('unlock-range-display')).toContainText('Level: 0 - 70');
     await expect(page.getByTestId('unlock-rank-display')).toContainText('Unlock rank: 0 - 70');
     await expect(page.getByTestId('checkbox-filter-owned')).not.toBeChecked();
-    await expect(page.getByTestId('checkbox-filter-ranked')).not.toBeChecked();
+    await expect(page.getByTestId('ranked-filter-wrapper').getByRole('textbox')).toHaveValue('All');
     await expect(page.getByTestId('checkbox-filter-unique')).not.toBeChecked();
     await expect(page.getByTestId('username')).toHaveValue("");
 });
