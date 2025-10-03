@@ -297,7 +297,8 @@ function populateFilters() {
     };
 
     const uniqueVals = (field) =>
-        [...new Set(unitData.map(d => d[field]).filter(v => v !== undefined))];
+        [...new Set(unitData.map(d => d[field]).filter(v => v !== undefined))]
+            .sort((a, b) => a.localeCompare(b));
 
     addOptions("building_filter", uniqueVals("building_requirement"));
     addOptions("other_filter", uniqueVals("other_requirements"));
