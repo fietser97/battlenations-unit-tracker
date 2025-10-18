@@ -8,7 +8,7 @@ test('Current version button test', async ({ page }) => {
     );
     const expected = ['(none)', 'How to Kill People From Quite a Long Way Away', 'Weapons Factory', 'Rocket Factory', 'SpecOps Center', 'Chemical Weapons Lab', 'Raptor Ranch', 'Boar Pen', 'Mammoth Pen', 'Sandworm Ranch', 'Infection Test Facility', 'Armor Shop', 'Armor ShopChemical Weapons Lab', 'Reef Bandit Armory'];
     expect(otherFilter.sort()).toEqual(expected.sort());
-    await expect(page.locator('#unlock-range-display')).toContainText('Level: 0 - 46');
+    await expect(page.locator('#unlock-range-display')).toContainText('Level: 0 - 49');
     const firstCell = await page.getByRole('cell', {name: 'Trooper', exact: true}).first().textContent();
     expect(firstCell?.trim()).toBe('Trooper');
 });

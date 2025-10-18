@@ -8,8 +8,8 @@ test('import test', async ({page}) => {
         await page.getByTestId('import-button').click(),
     ]);
     await fileChooser.setFiles('tests/fixtures/importTest.json');
-    await expect(page.getByTestId('unlock-rank-display')).toContainText('Unlock rank: 0 - 46');
-    await expect(page.getByTestId('unlock-range-display')).toContainText('Level: 0 - 46');
+    await expect(page.getByTestId('unlock-rank-display')).toContainText('Unlock rank: 0 - 49');
+    await expect(page.getByTestId('unlock-range-display')).toContainText('Level: 0 - 49');
     await expect(page.getByTestId('ranked-count')).toContainText('1');
     await expect(page.getByTestId('torank-count')).toContainText('17');
     await expect(page.getByTestId('owned-count')).toContainText('3');
