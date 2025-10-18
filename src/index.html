@@ -75,7 +75,7 @@
                 <p id="unlock-rank-display" class="range-label" data-testid="unlock-rank-display">Unlock rank: 1 -
                     70</p>
             </div>
-            <div class="input-field col s6 m2" data-testid="rank-filter-wrapper">
+            <div class="input-field col s2" data-testid="rank-filter-wrapper">
                 <label for="rank-filter"></label><select id="rank-filter" multiple data-testid="rank-filter">
                 <option value="" disabled>Select Rank(s)</option>
                 <option value="2">2</option>
@@ -89,7 +89,7 @@
             </select>
                 <label>Filter by Rank</label>
             </div>
-            <div class="col s8 m3" data-testid="nanopods-filter-wrapper">
+            <div class="col s1" data-testid="nanopods-filter-wrapper">
                 <div class="input-field">
                     <label for="nanopods_filter"></label><select id="nanopods_filter" data-testid="nanopods-filter">
                     <option value="all" selected>All</option>
@@ -99,16 +99,21 @@
                     <label>Requires Nanopods</label>
                 </div>
             </div>
-            <div class="col s8 m3" data-testid="checkbox-filters">
+            <div class="col s1" data-testid="ranked-filter-wrapper">
+                <div class="input-field">
+                    <label for="ranked_filter"></label><select id="ranked_filter" data-testid="ranked-filter">
+                    <option value="all" selected>All</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                    <label>Unit Ranked</label>
+                </div>
+            </div>
+            <div class="col s2" data-testid="checkbox-filters">
                 <div>
                     <label>
                         <input type="checkbox" id="filter-owned" data-testid="checkbox-filter-owned"/>
                         <span>Owned only</span>
-                    </label>
-                    <br>
-                    <label>
-                        <input type="checkbox" id="filter-ranked" data-testid="checkbox-filter-ranked"/>
-                        <span>Hide ranked</span>
                     </label>
                 </div>
                 <label>
