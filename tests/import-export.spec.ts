@@ -1,4 +1,5 @@
 import {expect, test} from '@playwright/test';
+import fs from 'fs';
 
 test('import test', async ({page}) => {
 
@@ -43,4 +44,16 @@ test('download username test', async ({page}) => {
     await page.getByTestId('export-button').click();
     const download = await downloadPromise;
     expect(download.suggestedFilename()).toContain("unitTracking_test");
+});
+
+test('download date test', async ({page}) => {
+    await page.goto('http://localhost:8080/');
+    await page.getByTestId('checkbox-ranked-Zombie Hunter-2').click();
+    const downloadPromise = page.waitForEvent('download');
+    await page.getByTestId('export-button').click();
+    const download = await downloadPromise;
+    const path = await download.path();
+    if (!path) throw new Error('path not found.');
+    const content = fs.readFileSync(path, 'utf8');
+    expect(content.toString()).toContain('\"ranked-date\":');
 });

@@ -1,6 +1,14 @@
 function exportData() {
+    const trackingData = getStoredTrackingData();
+    for (const [key, value] of Object.entries(trackingData)) {
+        if (value['ranked'] === true && !value['date']) {
+            console.log("no date");
+            trackingData[key]['ranked-date'] = new Date().toISOString().split('.')[0] + 'Z';
+        }
+    }
+
     const data = {
-        tracking: getStoredTrackingData(),
+        tracking: trackingData,
         filters: getCurrentFilters()
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
