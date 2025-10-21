@@ -4,9 +4,13 @@ window.updateTracking = function updateTracking(unitName, field, value, rank = n
     if (field === 'ranked' && rank !== null) {
         // Only update specific rank
         const key = `${unitName}::${rank}`;
-        if (!data[key]) data[key] = {};
-        data[key][field] = value;
-
+        if (value === true){
+            if (!data[key]) data[key] = {};
+            data[key]["ranked-date"] = new Date().toISOString().split('.')[0] + 'Z';
+            data[key][field] = value;
+        } else {
+            delete data[key];
+        }
         localStorage.setItem('unitTracking', JSON.stringify(data));
         document.querySelectorAll(`.${field}-checkbox[data-unit="${unitName}"][data-rank="${rank}"]`)
             .forEach(el => el.checked = value);

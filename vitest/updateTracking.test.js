@@ -25,10 +25,10 @@ describe('updateTracking', () => {
 
     it('updates ranked unit correctly', () => {
         updateTracking('Sniper', 'ranked', true, 2);
-
+        const data= { 'Sniper::2': { 'ranked-date': new Date().toISOString().split('.')[0] + 'Z', ranked: true }};
         expect(localStorage.setItem).toHaveBeenCalledWith(
             'unitTracking',
-            JSON.stringify({ 'Sniper::2': { ranked: true } })
+            JSON.stringify(data)
         );
     });
 
