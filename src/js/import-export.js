@@ -1,7 +1,7 @@
 function exportData() {
     const trackingData = getStoredTrackingData();
     for (const [key, value] of Object.entries(trackingData)) {
-        if (value['ranked'] === true && !value['date']) {
+        if (value['ranked'] === true && !value['ranked-date']) {
             console.log("no date");
             trackingData[key]['ranked-date'] = new Date().toISOString().split('.')[0] + 'Z';
         }
