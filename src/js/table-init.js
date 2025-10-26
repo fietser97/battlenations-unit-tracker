@@ -11,7 +11,7 @@ function initTable(unitData) {
                 data: 'unit_name',
                 title: "Icon",
                 render(data) {
-                return `<img src="data/icons/${data}.png" alt="${data}" data-testid="icon-${data}" style="width:40px;height:40px;">`
+                return `<img src="data/icons/${data}.png" alt="${data}" data-testid="icon-${data}" style="width:40px;height:40px;" loading="lazy">`
                 },
                 orderable: false,
             },
