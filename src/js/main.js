@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Unique unit name filter
                 const uniqueOnly = $('#filter-unique').prop('checked');
-                if (uniqueOnly && !isUnique(row.unit_name)) return false;
+                if (uniqueOnly && matchBuilding && matchOther && matchCategory && matchNano && ownedPass && matchRanked && !isUnique(row.unit_name)) return false;
 
                 return matchBuilding && matchOther && matchCategory && matchNano && ownedPass && matchRanked;
             });
