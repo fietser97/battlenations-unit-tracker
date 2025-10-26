@@ -81,7 +81,7 @@
     "rank_filter": [
       "2"
     ],
-    "filter_owned": true,
+    "filter_owned": "yes",
     "filter_ranked": false,
     "unlock_level_range": [
       0,

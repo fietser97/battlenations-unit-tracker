@@ -13,7 +13,8 @@ test('test rank todo', async ({ page }) => {
     await page.goto('http://localhost:8080/');
     await page.getByTestId('checkbox-owned-Zombie Hunter-2').click();
     await page.getByTestId('checkbox-owned-Trooper-2').click();
-    await page.getByText('Owned only').click();
+    await page.getByTestId('owned-filter-wrapper').getByRole('textbox').click();
+    await page.locator('[data-testid="owned-filter-wrapper"] ul.select-dropdown li span', { hasText: 'yes' }).click();
     await page.locator('[data-testid="ranked-filter-wrapper"] .select-dropdown.dropdown-trigger').click();
     await page.locator('[data-testid="ranked-filter-wrapper"] ul.select-dropdown li span', { hasText: 'No' }).click();
     await expect(page.getByTestId('torank-count')).toContainText('12');
