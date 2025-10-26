@@ -131,8 +131,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 const tracking = getStoredTrackingData();
                 const key = `${row.unit_name}::${row.rank}`;
                 const status = tracking[key] || {};
-                const filterOwned = $('#filter-owned').prop('checked');
-                const ownedPass = !filterOwned || status.owned;
+                const filterOwned = document.getElementById("owned_filter").value;
+                const ownedPass = filterOwned === "all"  || (filterOwned === "yes" && status.owned) || (filterOwned === "no" && !status.owned);
                 const rankedVal = document.getElementById("ranked_filter").value;
                 const matchRanked = rankedVal === "all" || (rankedVal === "yes" && status.ranked) || (rankedVal === "no" && !status.ranked);
 
@@ -142,8 +142,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 return matchBuilding && matchOther && matchCategory && matchNano && ownedPass && matchRanked;
             });
-
-            $('#filter-owned').on('change', () => table.draw());
             drawTable();
         });
 
@@ -258,7 +256,7 @@ function drawTable() {
 }
 
 function clearFilters(noReload = false) {
-    const filters = ['building_filter', 'other_filter', 'category_filter', 'rank-filter', 'nanopods_filter', 'ranked_filter'];
+    const filters = ['building_filter', 'other_filter', 'category_filter', 'rank-filter', 'nanopods_filter', 'ranked_filter','owned_filter'];
     for (const id of filters) {
         const el = document.getElementById(id);
         if (el) {
@@ -276,8 +274,8 @@ function clearFilters(noReload = false) {
     if (rankSlider?.noUiSlider) {
         rankSlider.noUiSlider.set([0, 100]);
     }
-    // Uncheck owned/ranked filters
-    $('#filter-owned').prop('checked', false);
+    // Uncheck unique filters
+
     $('#filter-unique').prop('checked', false);
     if (noReload === false) {
         table.draw();
@@ -312,7 +310,7 @@ function getCurrentFilters() {
         category_filter: $('#category_filter').val(),
         nanopods_filter: $('#nanopods_filter').val(),
         rank_filter: $('#rank-filter').val(),
-        filter_owned: $('#filter-owned').prop('checked'),
+        filter_owned: $('#owned_filter').val(),
         ranked_filter: $('#ranked_filter').val(),
         unlock_level_range: unlockSlider.noUiSlider.get().map(Number),
         rank_slider: rankSlider.noUiSlider.get().map(Number),
@@ -327,7 +325,7 @@ function setFilters(filters) {
     $('#category_filter').val(filters.category_filter).formSelect();
     $('#nanopods_filter').val(filters.nanopods_filter).formSelect();
     $('#rank-filter').val(filters.rank_filter).formSelect();
-    $('#filter-owned').prop('checked', filters.filter_owned);
+    $('#owned_filter').val(filters.filter_owned).formSelect();
     $('#ranked_filter').val(filters.ranked_filter).val() || $('#ranked_filter').prop('selectedIndex', 0);
     $('#username').val(filters.username);
     if (filters.unlock_level_range && filters.unlock_level_range.length === 2) {

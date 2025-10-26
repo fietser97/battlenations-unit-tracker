@@ -7,7 +7,7 @@ test('page load', async ({page}) => {
     await expect(page.getByRole('button', {name: 'Import Tracking'})).toBeVisible();
     await expect(page.getByText('Filter by Rank')).toBeVisible();
     await expect(page.locator('label').filter({hasText: 'Requires Nanopods'})).toBeVisible();
-    await expect(page.getByText('Owned only')).toBeVisible();
+    await expect(page.getByTestId('owned-filter-wrapper').getByRole('textbox')).toBeVisible();
     await expect(page.getByText('Unit Ranked')).toBeVisible();
     await expect(page.getByText('Show Unique Units Only')).toBeVisible();
     await expect(page.locator('label').filter({hasText: 'Category'})).toBeVisible();

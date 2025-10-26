@@ -109,13 +109,17 @@
                     <label>Unit Ranked</label>
                 </div>
             </div>
-            <div class="col s2" data-testid="checkbox-filters">
-                <div>
-                    <label>
-                        <input type="checkbox" id="filter-owned" data-testid="checkbox-filter-owned"/>
-                        <span>Owned only</span>
-                    </label>
+            <div class="col s1" data-testid="owned-filter-wrapper">
+                <div class="input-field">
+                    <label for="owned_filter"></label><select id="owned_filter" data-testid="owned-filter">
+                    <option value="all" selected>All</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                    <label>Unit owned</label>
                 </div>
+            </div>
+            <div class="col s2" data-testid="checkbox-filters" style="margin-top: 1%;">
                 <label>
                     <input type="checkbox" id="filter-unique" data-testid="checkbox-filter-unique">
                     <span>Show Unique Units Only</span>

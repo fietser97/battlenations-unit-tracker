@@ -12,7 +12,8 @@ test('reset test', async ({page}) => {
     await page.locator('[data-testid="ranked-filter-wrapper"] .select-dropdown.dropdown-trigger').click();
     await page.locator('[data-testid="ranked-filter-wrapper"] ul.select-dropdown li span', { hasText: 'Yes' }).click();
     await page.getByText('Show Unique Units Only').click();
-    await page.getByText('Owned only').click();
+    await page.getByTestId('owned-filter-wrapper').getByRole('textbox').click();
+    await page.locator('[data-testid="owned-filter-wrapper"] ul.select-dropdown li span', { hasText: 'yes' }).click();
     await page.getByTestId('category-filter-wrapper').getByRole('textbox').click();
     await page.locator('span').filter({hasText: 'defense'}).first().click();
     await page.getByTestId('building-filter-wrapper').getByRole('textbox').click();
@@ -32,7 +33,7 @@ test('reset test', async ({page}) => {
     expect(otherFilter.sort()).toEqual(expected.sort());
     await expect(page.getByTestId('category-filter-wrapper').getByRole('textbox')).toHaveValue('defense, infected');
     await expect(page.getByTestId('building-filter-wrapper').getByRole('textbox')).toHaveValue('Barrackslevel 5, Barrackslevel 7');
-    await expect(page.getByTestId('checkbox-filter-owned')).toBeChecked();
+    await expect(page.getByTestId('owned-filter-wrapper').getByRole('textbox')).toHaveValue('Yes');
     await expect(page.getByTestId('ranked-filter-wrapper').getByRole('textbox')).toHaveValue('Yes');
     await expect(page.getByTestId('checkbox-filter-unique')).toBeChecked();
     await page.getByTestId('clear-all-btn').click();
@@ -46,7 +47,7 @@ test('reset test', async ({page}) => {
     await expect(page.getByTestId('ranked-count')).toContainText('0');
     await expect(page.getByTestId('unlock-range-display')).toContainText('Level: 0 - 70');
     await expect(page.getByTestId('unlock-rank-display')).toContainText('Unlock rank: 0 - 70');
-    await expect(page.getByTestId('checkbox-filter-owned')).not.toBeChecked();
+    await expect(page.getByTestId('owned-filter-wrapper').getByRole('textbox')).toHaveValue('All')
     await expect(page.getByTestId('ranked-filter-wrapper').getByRole('textbox')).toHaveValue('All');
     await expect(page.getByTestId('checkbox-filter-unique')).not.toBeChecked();
     await expect(page.getByTestId('username')).toHaveValue("");
