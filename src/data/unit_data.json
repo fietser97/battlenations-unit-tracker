@@ -3161,7 +3161,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 120,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Scout (Team Fortress 2)",
@@ -3175,7 +3175,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 132,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Heavy (Team Fortress 2)",
@@ -3259,7 +3259,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 160,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Heavy (Team Fortress 2)",
@@ -3273,7 +3273,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 176,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Demoman (Team Fortress 2)",
@@ -3357,7 +3357,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 160,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Demoman (Team Fortress 2)",
@@ -3371,7 +3371,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 180,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Soldier (Team Fortress 2)",
@@ -3455,7 +3455,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Soldier (Team Fortress 2)",
@@ -3469,7 +3469,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 148,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Pyro (Team Fortress 2)",
@@ -3553,7 +3553,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 160,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Pyro (Team Fortress 2)",
@@ -3567,7 +3567,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 180,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Special Agent",
@@ -4001,7 +4001,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 188,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "Zombie Hunter",
@@ -4015,7 +4015,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 204,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "M2014 Laser Gunner",
@@ -4071,7 +4071,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 116,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "M2014 Laser Gunner",
@@ -4085,7 +4085,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 132,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "Aero Jetpack Trooper",
@@ -4183,7 +4183,7 @@
     "requires_nanopods": true,
     "category": "aircraft",
     "sp_reward": 140,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Aero Jetpack Trooper",
@@ -4197,7 +4197,7 @@
     "requires_nanopods": true,
     "category": "aircraft",
     "sp_reward": 152,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Shadow Agent",
@@ -4267,7 +4267,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 112,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "Shadow Agent",
@@ -4281,7 +4281,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 124,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "Wandering Samurai",
@@ -4351,7 +4351,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 140,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "Wandering Samurai",
@@ -4365,7 +4365,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 152,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "Weapon Technician",
@@ -4449,7 +4449,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 116,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Weapon Technician",
@@ -4463,7 +4463,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Mechanized Trooper",
@@ -4561,7 +4561,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 196,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Mechanized Trooper",
@@ -4575,7 +4575,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 212,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Jedrek the Crusher",
@@ -4673,7 +4673,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 200,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Jedrek the Crusher",
@@ -4687,7 +4687,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 220,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Raider Summoner",
@@ -4785,7 +4785,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 140,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Raider Summoner",
@@ -4799,7 +4799,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 156,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Zombie Slayer",
@@ -4897,7 +4897,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 180,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Zombie Slayer",
@@ -4911,7 +4911,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 196,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Unicorn Trooper",
@@ -4995,7 +4995,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 160,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Unicorn Trooper",
@@ -5009,7 +5009,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 184,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Allied Mammoth Rider",
@@ -6087,7 +6087,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 280,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Legendary Mammoth",
@@ -6101,7 +6101,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 304,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Bigfoot Shaman",
@@ -6171,7 +6171,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 188,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Bigfoot Shaman",
@@ -6185,7 +6185,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 200,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Legendary Boar",
@@ -6283,7 +6283,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 252,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "Legendary Boar",
@@ -6297,7 +6297,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 276,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "Legendary Raptor",
@@ -6395,7 +6395,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 252,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "Legendary Raptor",
@@ -6409,7 +6409,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 276,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "Legendary Sandworm",
@@ -6507,7 +6507,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 388,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "Legendary Sandworm",
@@ -6521,7 +6521,7 @@
     "requires_nanopods": true,
     "category": "critters",
     "sp_reward": 416,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "Allied Raider Warrior",
@@ -9349,7 +9349,7 @@
     "requires_nanopods": false,
     "category": "vehicles",
     "sp_reward": 100,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "Anti-Aircraft Turret",
@@ -9363,7 +9363,7 @@
     "requires_nanopods": false,
     "category": "vehicles",
     "sp_reward": 116,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "Humvee",
@@ -12947,7 +12947,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 148,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Anti-Aircraft Flak Gun",
@@ -12961,7 +12961,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 152,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Anti-Aircraft Flak Gun",
@@ -12975,7 +12975,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 176,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Bora-Bora Hovercraft",
@@ -13073,7 +13073,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 184,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "Bora-Bora Hovercraft",
@@ -13087,7 +13087,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 200,
-    "pre_req_rank": ""
+    "pre_req_rank": 55
   },
   {
     "unit_name": "TANK CRUSHER",
@@ -13171,7 +13171,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 148,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "TANK CRUSHER",
@@ -13185,7 +13185,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 168,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Demolisher",
@@ -13269,7 +13269,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 188,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Demolisher",
@@ -13283,7 +13283,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 212,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Armored SUV",
@@ -13381,7 +13381,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 220,
-    "pre_req_rank": ""
+    "pre_req_rank": 61
   },
   {
     "unit_name": "Armored SUV",
@@ -13395,7 +13395,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 240,
-    "pre_req_rank": ""
+    "pre_req_rank": 61
   },
   {
     "unit_name": "Ancient Sentry",
@@ -13479,7 +13479,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 248,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Ancient Sentry",
@@ -13493,7 +13493,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 276,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Nomad Elemental Rover",
@@ -13577,7 +13577,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 224,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Nomad Elemental Rover",
@@ -13591,7 +13591,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 248,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Imperial Fury",
@@ -13689,7 +13689,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 244,
-    "pre_req_rank": ""
+    "pre_req_rank": 65
   },
   {
     "unit_name": "Supreme Mini Tank",
@@ -13885,7 +13885,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 300,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "Mechanized Artillery",
@@ -13997,7 +13997,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 264,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "Anti-Gravity Tank",
@@ -14109,7 +14109,7 @@
     "requires_nanopods": true,
     "category": "aircraft",
     "sp_reward": 276,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "NT-1 Mechanical Tank",
@@ -14221,7 +14221,7 @@
     "requires_nanopods": true,
     "category": "vehicles",
     "sp_reward": 380,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "Gunboat",
@@ -14305,7 +14305,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 136,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Gunboat",
@@ -14319,7 +14319,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 148,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Destroyer",
@@ -14403,7 +14403,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 204,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Destroyer",
@@ -14417,7 +14417,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 220,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Submarine",
@@ -14501,7 +14501,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 176,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Submarine",
@@ -14515,7 +14515,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 192,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Buoy",
@@ -14557,7 +14557,7 @@
     "requires_nanopods": false,
     "category": "defense",
     "sp_reward": 108,
-    "pre_req_rank": ""
+    "pre_req_rank": 45
   },
   {
     "unit_name": "Buoy",
@@ -14571,7 +14571,7 @@
     "requires_nanopods": false,
     "category": "defense",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 45
   },
   {
     "unit_name": "Buoy",
@@ -14585,7 +14585,7 @@
     "requires_nanopods": false,
     "category": "defense",
     "sp_reward": 144,
-    "pre_req_rank": ""
+    "pre_req_rank": 45
   },
   {
     "unit_name": "Battleship Raptor-Class",
@@ -14669,7 +14669,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 264,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Battleship Raptor-Class",
@@ -14683,7 +14683,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 288,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Battleship Mammoth-Class",
@@ -14767,7 +14767,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 324,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Battleship Mammoth-Class",
@@ -14781,7 +14781,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 352,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "SC-2 Pelican",
@@ -14865,7 +14865,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 152,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "SC-2 Pelican",
@@ -14879,7 +14879,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 168,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Jet Ski",
@@ -14963,7 +14963,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 176,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Jet Ski",
@@ -14977,7 +14977,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 192,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Power Boat",
@@ -15061,7 +15061,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 216,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Power Boat",
@@ -15075,7 +15075,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 232,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Tactical Submarine",
@@ -15159,7 +15159,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 232,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Tactical Submarine",
@@ -15173,7 +15173,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 252,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Atmospheric Diving Trooper",
@@ -15257,7 +15257,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 256,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Atmospheric Diving Trooper",
@@ -15271,7 +15271,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 280,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Atmospheric Armor Trooper",
@@ -15355,7 +15355,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 280,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Atmospheric Armor Trooper",
@@ -15369,7 +15369,7 @@
     "requires_nanopods": true,
     "category": "soldiers",
     "sp_reward": 308,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Baby Grouper",
@@ -15453,7 +15453,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 204,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Baby Grouper",
@@ -15467,7 +15467,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 224,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Monster Grouper",
@@ -15551,7 +15551,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 304,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Monster Grouper",
@@ -15565,7 +15565,7 @@
     "requires_nanopods": true,
     "category": "navy",
     "sp_reward": 328,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Frontier Pyro",
@@ -18561,7 +18561,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 212,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Ironclad Battleship",
@@ -18575,7 +18575,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 232,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Ironclad Battleship",
@@ -18589,7 +18589,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 252,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Kraken Tentacle",
@@ -18659,7 +18659,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 204,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "Kraken Tentacle",
@@ -18673,7 +18673,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 224,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "Unmanned Scram Cannon Turret",
@@ -18855,7 +18855,7 @@
     "requires_nanopods": false,
     "category": "critters",
     "sp_reward": 196,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Flames of Love Archer",
@@ -18911,7 +18911,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 140,
-    "pre_req_rank": ""
+    "pre_req_rank": 50
   },
   {
     "unit_name": "Flames of Love Archer",
@@ -18925,7 +18925,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 160,
-    "pre_req_rank": ""
+    "pre_req_rank": 50
   },
   {
     "unit_name": "Sopwith Spiderwasp",
@@ -19009,7 +19009,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 96,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Sopwith Spiderwasp",
@@ -19023,7 +19023,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 104,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Sopwith Spiderwasp",
@@ -19037,7 +19037,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 112,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "BC-1 Snake",
@@ -19121,7 +19121,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 112,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "BC-1 Snake",
@@ -19135,7 +19135,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 124,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "BC-1 Snake",
@@ -19149,7 +19149,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 136,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "V-14 Maverick",
@@ -19233,7 +19233,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 124,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "V-14 Maverick",
@@ -19247,7 +19247,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 140,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "V-14 Maverick",
@@ -19261,7 +19261,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 164,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "L-60 Hawker Hurricane",
@@ -19345,7 +19345,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 140,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "L-60 Hawker Hurricane",
@@ -19359,7 +19359,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 156,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "L-60 Hawker Hurricane",
@@ -19373,7 +19373,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 104,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "ZRS-6 Dirigible",
@@ -19457,7 +19457,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 88,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "ZRS-6 Dirigible",
@@ -19471,7 +19471,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 92,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "ZRS-6 Dirigible",
@@ -19485,7 +19485,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 104,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "V47 KittyHawk",
@@ -19569,7 +19569,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 104,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "V47 KittyHawk",
@@ -19583,7 +19583,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 116,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "V47 KittyHawk",
@@ -19597,7 +19597,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Thundercloud F10",
@@ -19681,7 +19681,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 116,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Thundercloud F10",
@@ -19695,7 +19695,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Thundercloud F10",
@@ -19709,7 +19709,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 156,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Z2-18 Bomber",
@@ -19793,7 +19793,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 212,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Z2-18 Bomber",
@@ -19807,7 +19807,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 236,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Z2-18 Bomber",
@@ -19821,7 +19821,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 260,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Specimen a05 Apex Bullfrog",
@@ -19905,7 +19905,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 132,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Specimen a05 Apex Bullfrog",
@@ -19919,7 +19919,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 148,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Specimen a05 Apex Bullfrog",
@@ -19933,7 +19933,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 164,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Specimen d05 Apex Stalker",
@@ -20017,7 +20017,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Specimen d05 Apex Stalker",
@@ -20031,7 +20031,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 140,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Specimen d05 Apex Stalker",
@@ -20045,7 +20045,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 156,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Specimen e03 Apex Colossus",
@@ -20129,7 +20129,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 164,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Specimen e03 Apex Colossus",
@@ -20143,7 +20143,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 184,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "Specimen e03 Apex Colossus",
@@ -20157,7 +20157,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 204,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "UH-1B SkyRaptor",
@@ -20241,7 +20241,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 108,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "UH-1B SkyRaptor",
@@ -20255,7 +20255,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 120,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "UH-1B SkyRaptor",
@@ -20269,7 +20269,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 132,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "B10 Wild Boar",
@@ -20353,7 +20353,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 124,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "B10 Wild Boar",
@@ -20367,7 +20367,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 148,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "B10 Wild Boar",
@@ -20381,7 +20381,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 172,
-    "pre_req_rank": ""
+    "pre_req_rank": 51
   },
   {
     "unit_name": "F-51 Hell Fire",
@@ -20479,7 +20479,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 132,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "F-51 Hell Fire",
@@ -20493,7 +20493,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 144,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Signal Jamming Drone",
@@ -20591,7 +20591,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Signal Jamming Drone",
@@ -20605,7 +20605,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 144,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Silverwolf Crop Buster",
@@ -20703,7 +20703,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 156,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "Silverwolf Crop Buster",
@@ -20717,7 +20717,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 0,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "Silverwolf Chunook Helicopter",
@@ -20815,7 +20815,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 124,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Silverwolf Chunook Helicopter",
@@ -20829,7 +20829,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 136,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "AD7 Bigfoot SkyBus",
@@ -20927,7 +20927,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 184,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "AD7 Bigfoot SkyBus",
@@ -20941,7 +20941,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 208,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "Tri-Wing Terror",
@@ -21039,7 +21039,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 104,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "Tri-Wing Terror",
@@ -21053,7 +21053,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 112,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "BC-3 Cobra",
@@ -21151,7 +21151,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 116,
-    "pre_req_rank": ""
+    "pre_req_rank": 61
   },
   {
     "unit_name": "BC-3 Cobra",
@@ -21165,7 +21165,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 61
   },
   {
     "unit_name": "RS17 Shadowwasp",
@@ -21263,7 +21263,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "RS17 Shadowwasp",
@@ -21277,7 +21277,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 144,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "C17 Winged Mammoth",
@@ -21375,7 +21375,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 116,
-    "pre_req_rank": ""
+    "pre_req_rank": 61
   },
   {
     "unit_name": "C17 Winged Mammoth",
@@ -21389,7 +21389,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 128,
-    "pre_req_rank": ""
+    "pre_req_rank": 61
   },
   {
     "unit_name": "B10-C Boar II",
@@ -21487,7 +21487,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 168,
-    "pre_req_rank": ""
+    "pre_req_rank": 61
   },
   {
     "unit_name": "B10-C Boar II",
@@ -21501,7 +21501,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 192,
-    "pre_req_rank": ""
+    "pre_req_rank": 61
   },
   {
     "unit_name": "Attack Drone",
@@ -21599,7 +21599,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 120,
-    "pre_req_rank": ""
+    "pre_req_rank": 59
   },
   {
     "unit_name": "Flying Dexter Fragment",
@@ -21697,7 +21697,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 188,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Flying Dexter Fragment",
@@ -21711,7 +21711,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 208,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Falcon's Nest",
@@ -21809,7 +21809,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 120,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Falcon's Nest",
@@ -21823,7 +21823,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 132,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Thresher Tank",
@@ -21921,7 +21921,7 @@
     "requires_nanopods": false,
     "category": "vehicles",
     "sp_reward": 228,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Thresher Tank",
@@ -21935,7 +21935,7 @@
     "requires_nanopods": false,
     "category": "vehicles",
     "sp_reward": 248,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "RS-B17 Shadow Hornet",
@@ -22033,7 +22033,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 136,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "RS-B17 Shadow Hornet",
@@ -22047,7 +22047,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 148,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Specimen i02 Apex Mauler",
@@ -22145,7 +22145,7 @@
     "requires_nanopods": false,
     "category": "critters",
     "sp_reward": 220,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Specimen i02 Apex Mauler",
@@ -22159,7 +22159,7 @@
     "requires_nanopods": false,
     "category": "critters",
     "sp_reward": 236,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Navy Trooper",
@@ -22243,7 +22243,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 192,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Navy Trooper",
@@ -22257,7 +22257,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 212,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Mini Sub",
@@ -22341,7 +22341,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 156,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Mini Sub",
@@ -22355,7 +22355,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 168,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Minelayer Destroyer",
@@ -22439,7 +22439,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 280,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "Minelayer Destroyer",
@@ -22453,7 +22453,7 @@
     "requires_nanopods": false,
     "category": "navy",
     "sp_reward": 308,
-    "pre_req_rank": ""
+    "pre_req_rank": 66
   },
   {
     "unit_name": "T16 Aero Bike",
@@ -22565,7 +22565,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 212,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "UD-4L Gunship",
@@ -22677,7 +22677,7 @@
     "requires_nanopods": false,
     "category": "aircraft",
     "sp_reward": 184,
-    "pre_req_rank": ""
+    "pre_req_rank": 70
   },
   {
     "unit_name": "Warmonger",
@@ -22761,7 +22761,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 264,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Warmonger",
@@ -22775,7 +22775,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 296,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Painmonger",
@@ -22859,7 +22859,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 268,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Painmonger",
@@ -22873,7 +22873,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 304,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Deathmonger",
@@ -22957,7 +22957,7 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 292,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   },
   {
     "unit_name": "Deathmonger",
@@ -22971,6 +22971,6 @@
     "requires_nanopods": false,
     "category": "soldiers",
     "sp_reward": 328,
-    "pre_req_rank": ""
+    "pre_req_rank": 60
   }
 ]
