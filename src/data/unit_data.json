@@ -12719,7 +12719,7 @@
     "unit_type": "Vehicle-Metal",
     "unlock_level": 30,
     "building_requirement": "",
-    "other_requirements": "",
+    "other_requirements": "Promotional",
     "requires_nanopods": false,
     "category": "vehicles",
     "sp_reward": 64,
